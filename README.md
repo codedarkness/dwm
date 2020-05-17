@@ -60,4 +60,4 @@ Here are the software that always install in my systems:
 
 Add your keybinings in config.h
 
-To lazzy! that's why i use *Manjaro* or *Debian* to install my base system and work from that.
+Too lazzy! that's why i use *Manjaro* or *Debian* to install my base system and work from that.
