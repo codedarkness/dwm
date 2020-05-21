@@ -16,7 +16,7 @@ This script just install a custom build for:
 
 Install *xsetrrot* this application can manage the status bar with plain text and bash scripts.
 
-## Patches
+## dwm Patches
 
 Patches added to dwm in this build:
 
@@ -24,6 +24,14 @@ Patches added to dwm in this build:
 * autostart - programs when log in
 * center windows - center windows in toggle mode
 * uselesspag - add gaps between windows
+
+## dmenu Patches
+
+Patches added to dmenu in this build:
+
+* center - centers dmenu in the middle of the screen
+* border - adds a border around the dmenu window
+* mouse support - dmenu will have basic mouse support
 
 ![dwm - darknesscode](https://github.com/codedarkness/dwm-slstatus/blob/master/config-files/dwm-b.png)
 
@@ -60,4 +68,4 @@ Here are the software that always install in my systems:
 
 Add your keybinings in config.h
 
-Too lazzy! that's why i use *Manjaro* or *Debian* to install my base system and work from that.
+To lazzy! that's why i use *Manjaro* or *Debian* to install my base system and work from that.
