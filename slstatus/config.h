@@ -1,3 +1,13 @@
+/*  ____             _                         ____          _
+## |  _ \  __ _ _ __| | ___ __   ___  ___ ___ / ___|___   __| | ___
+## | | | |/ _' | '__| |/ / '_ \ / _ \/ __/ __| |   / _ \ / _' |/ _ \
+## | |_| | (_| | |  |   <| | | |  __/\__ \__ \ |__| (_) | (_| |  __/
+## |____/ \__,_|_|  |_|\_\_| |_|\___||___/___/\____\___/ \__,_|\___|
+## -----------------------------------------------------------------
+## https://darkncesscode.com
+## https://github.com/codedarkness
+## ---------------------------------------------------------------*/
+
 /* See LICENSE file for copyright and license details. */
 
 /* interval between updates (in ms) */
@@ -67,7 +77,7 @@ static const struct arg args[] = {
 	{ temp,     "TEM %s°C : ",   "/sys/class/thermal/thermal_zone0/temp" },
 	{ ram_used, "MEN %s : ",   NULL } ,
 	{ disk_free,"HDD %s : ",   "/" },
-	/* { battery_perc, "BAT %s% : ", "BAT0" }, */
+	{ battery_perc, "BAT %s% : ", "BAT0" },
 	{ run_command, "VOL %s%% : ", "/bin/sh -c \"amixer get Master | tail -n1 | grep -Po '\\[\\K[^%]*' | head -n1\"" },
 	{ datetime, "%s",          "%a %-d %b %I:%M " },
 };
