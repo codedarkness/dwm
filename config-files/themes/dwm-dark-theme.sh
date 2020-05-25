@@ -42,11 +42,11 @@ sed -i 's/col_gray3\[\]\s*    =\s* ".*";/col_gray3\[\]\       =\ "#808080";/g' d
 	echo "Foreground color (font) has changed"
 
 ## background color
-sed -i 's/col_gray4\[\]\s*    =\s* ".*";/col_gray4\[\]\       =\ "#d7d7d7";/g' dwm/config.h &&
+sed -i 's/col_gray4\[\]\s*    =\s* ".*";/col_gray4\[\]\       =\ "#14161B";/g' dwm/config.h &&
 	echo "Background color has changed"
 
 ## border color focused windows and tags
-sed -i 's/col_cyan\[\]\s*     =\s* ".*";/col_cyan\[\]\        =\ "#22252C";/g' dwm/config.h &&
+sed -i 's/col_cyan\[\]\s*     =\s* ".*";/col_cyan\[\]\        =\ "#808080";/g' dwm/config.h &&
 	echo "Boder color (focused/tags) has changed"
 
 echo "------------------------------------------------------------"
