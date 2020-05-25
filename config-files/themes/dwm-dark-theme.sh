@@ -46,7 +46,7 @@ sed -i 's/col_gray4\[\]\s*    =\s* ".*";/col_gray4\[\]\       =\ "#d7d7d7";/g' d
 	echo "Background color has changed"
 
 ## border color focused windows and tags
-sed -i 's/col_cyan\[\]\s*     =\s* ".*";/col_cyan\[\]\        =\ "#C0C0C0";/g' dwm/config.h &&
+sed -i 's/col_cyan\[\]\s*     =\s* ".*";/col_cyan\[\]\        =\ "#22252C";/g' dwm/config.h &&
 	echo "Boder color (focused/tags) has changed"
 
 echo "------------------------------------------------------------"
