@@ -60,7 +60,9 @@ config-files() {
 	mkdir ~/.dwm &&
 		echo " #### .dwm folder created";
 	cp -ar config-files/autostart.sh $HOME/.dwm/ &&
-		echo " #### autostart has been copied"
+		echo " #### autostart has been copied";
+	cp -ar config-files/sysact.sh $HOME/.dwm/ &&
+		echo " #### system account files has been copied"
 }
 
 themes() {
