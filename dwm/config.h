@@ -1,5 +1,4 @@
-/*******************************************************************
-##  ____             _                         ____          _
+/*  ____             _                         ____          _
 ## |  _ \  __ _ _ __| | ___ __   ___  ___ ___ / ___|___   __| | ___
 ## | | | |/ _' | '__| |/ / '_ \ / _ \/ __/ __| |   / _ \ / _' |/ _ \
 ## | |_| | (_| | |  |   <| | | |  __/\__ \__ \ |__| (_) | (_| |  __/
@@ -7,8 +6,7 @@
 ## -----------------------------------------------------------------
 ## https://darkncesscode.com
 ## https://github.com/codedarkness
-## -----------------------------------------------------------------
-*******************************************************************/
+## ---------------------------------------------------------------*/
 
 /* See LICENSE file for copyright and license details. */
 
@@ -20,11 +18,11 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=11" };
 static const char dmenufont[]       = "monospace:size=11";
-static const char col_gray1[]       = "#1E1F29"; /* backgroun color */
-static const char col_gray2[]       = "#383C4A";
-static const char col_gray3[]       = "#C0C5CE";
-static const char col_gray4[]       = "#D7D7D7";
-static const char col_cyan[]        = "#383A59";
+static const char col_gray1[]       = "#14161B"; /* backgroun color */
+static const char col_gray2[]       = "#22252C";
+static const char col_gray3[]       = "#808080";
+static const char col_gray4[]       = "#14161B";
+static const char col_cyan[]        = "#808080";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -39,15 +37,15 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      	  instance    title        tags mask     iscentered   isfloating   monitor */
-	{ "Gimp",     	  NULL,       NULL,        0,            0,		  0,           -1 },
-	{ "Firefox",  	  NULL,       NULL,        1 << 8,       0,		  0,           -1 },
-	{ "URxvt",    	  NULL,       "rsync",     0,		 1,		  1,	       -1 },
-	{ "URxvt",    	  NULL,	      "tremc_url", 0,	         1,		  1,	       -1 },
-	{ "URxvt",	  NULL,	      "alsamixer", 0,		 1,		  1,	       -1 },
-	{ "Nitrogen",	  NULL,	      NULL,	   0,	         1,               1,           -1 },
-	{ "MPlayer",	  NULL,       NULL,        0,            1,               1,           -1 },
-	{ "Lxappearance", NULL,	      NULL,        0,		 1,		  1,	       -1 },
+	/* class      	  instance    title                tags mask     iscentered   isfloating   monitor */
+	{ "Gimp",     	  NULL,       NULL,                0,            0,		  0,           -1 },
+	{ "Firefox",  	  NULL,       NULL,                1 << 8,       0,		  0,           -1 },
+	{ "URxvt",    	  NULL,       "backup-system",     0,		 1,		  1,	       -1 },
+	{ "URxvt",    	  NULL,	      "tremc_url",         0,	         1,		  1,	       -1 },
+	{ "URxvt",	  NULL,	      "alsamixer",         0,		 1,		  1,	       -1 },
+	{ "Nitrogen",	  NULL,	      NULL,	           0,	         1,               1,           -1 },
+	{ "MPlayer",	  NULL,       NULL,                0,            1,               1,           -1 },
+	{ "Lxappearance", NULL,	      NULL,                0,		 1,		  1,	       -1 },
 };
 
 /* layout(s) */
@@ -104,8 +102,8 @@ static Key keys[] = {
 	{ MODKEY,			XK_v,	   spawn,	   SHCMD("terminal -e vim") },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_0,      spawn,          SHCMD("./.dwm/sysact.sh") },
+	{ MODKEY|ShiftMask,             XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
@@ -113,17 +111,15 @@ static Key keys[] = {
 	{ 0,                            XK_Print,  spawn,          SHCMD("i3-scrot -d") },
 
 	/* open custom scripts dmenu */
-	{ MODKEY,                       XK_o,      spawn,          SHCMD("./.config/scripts/dmenu-gui-programs.sh") },
-	{ MODKEY|ControlMask,           XK_o,	   spawn,          SHCMD("terminal -e ./.config/scripts/tremc_url.sh") },
+	{ MODKEY,                       XK_o,      spawn,          SHCMD("./Documents/scripts/dmenu-programs.sh") },
+	{ MODKEY|ControlMask,           XK_o,	   spawn,          SHCMD("terminal -e ./Documents/scripts/tremc_url.sh") },
 	{ MODKEY|ShiftMask,             XK_o,      spawn,          {.v = dmenucmd } },
 
 	/* open gui applications */
 	{ MODKEY,                       XK_F2,     spawn,          SHCMD("brave") },
 	{ MODKEY,                       XK_F3,     spawn,          SHCMD("pcmanfm") },
 	{ MODKEY,                       XK_F4,     spawn,          SHCMD("terminal -e vim './Documents/darkwiki/index.wiki'") },
-	{ MODKEY,                      XK_F10,     spawn,          SHCMD("blurlock") },
-	{ MODKEY,                      XK_F11,     spawn,          SHCMD("systemctl reboot") },
-	{ MODKEY,                      XK_F12,     spawn,          SHCMD("systemctl poweroff") },
+	{ MODKEY,                      XK_F12,     spawn,          SHCMD("blurlock") },
 
 	/* volume keys */
 	{ 0,                 XF86XK_AudioMute,     spawn,          {.v = mutevol } },
