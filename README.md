@@ -61,9 +61,8 @@ Here are the software that always install in my systems:
 | MOD+r       | Ranger File Manager  |
 | MOD+v       | Vim                  |
 | MOD+Shift+o | dmenu_recency        |
-| MOD+F10     | Lock screen          |
-| MOD+F11     | Restart computer     |
-| MOD+F12     | Shutdown computer    |
+| MOD+F12     | Lock screen          |
+| MOD+0	      | System account       |
 | MOD+Shift+q | Quit                 |
 
 Add your keybinings in config.h
