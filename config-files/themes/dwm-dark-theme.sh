@@ -31,23 +31,33 @@ echo "-------------------------------------------------------------"
 
 ## background color
 sed -i 's/col_gray1\[\]\s*    =\s* ".*";/col_gray1\[\]\       =\ "#14161B";/g' dwm/config.h &&
-	echo "Background color has changed"
+	echo " ### Background color has changed"
 
 ## border color unfocused windows
 sed -i 's/col_gray2\[\]\s*    =\s* ".*";/col_gray2\[\]\       =\ "#22252C";/g' dwm/config.h &&
-	echo "Border color (unfocused) has changed"
+	echo " ### Border color (unfocused) has changed"
 
 ## foreground color (font)
 sed -i 's/col_gray3\[\]\s*    =\s* ".*";/col_gray3\[\]\       =\ "#808080";/g' dwm/config.h &&
-	echo "Foreground color (font) has changed"
+	echo " ### Foreground color (font) has changed"
 
 ## background color
 sed -i 's/col_gray4\[\]\s*    =\s* ".*";/col_gray4\[\]\       =\ "#14161B";/g' dwm/config.h &&
-	echo "Background color has changed"
+	echo " ### Background color has changed"
+
+## foreground color (font tags)
+sed -i 's/col_gray5\[\]\s*    =\s* ".*";/col_gray5\[\]\       =\ "#797D7F";/g' dwm/config.h &&
+	echo " ### Window border color has changed"
 
 ## border color focused windows and tags
 sed -i 's/col_cyan\[\]\s*     =\s* ".*";/col_cyan\[\]\        =\ "#808080";/g' dwm/config.h &&
-	echo "Boder color (focused/tags) has changed"
+	echo " ### Boder color (focused/tags) has changed"
+
+## dmenu system account
+sed -i 's/nb="-nb #.*"/nb="-nb #14161B"/g' ~/.dwm/sysact.sh &&
+sed -i 's/sb="-sb #.*"/sb="-sb #14161B"/g' ~/.dwm/sysact.sh &&
+sed -i 's/nf="-nf #.*"/nf="-nf #383A59"/g' ~/.dwm/sysact.sh &&
+	echo " dmenu colors has canged"
 
 echo "------------------------------------------------------------"
 
