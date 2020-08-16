@@ -14,7 +14,7 @@ This script just install a custom build for:
 * Copy custom files (autostart.sh and conky)
 * Color Schemes for dwm (config.h)
 
-Install *xsetrrot* this application can manage the status bar with plain text and bash scripts.
+Install *xsetroot* this application can manage the status bar with plain text and bash scripts.
 
 ## dwm Patches
 

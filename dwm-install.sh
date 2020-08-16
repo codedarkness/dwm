@@ -22,47 +22,54 @@
 #
 # -----------------------------------------------------------------
 
-dwm() {
-	echo ""
-	echo " Getting ready to install dwm"
-	cd dwm;
-	pwd;
-	sleep 2;
-	sudo make clean install
-}
-
-slstatus() {
-	echo ""
-	echo " Getting ready to install slstatus"
-	cd slstatus;
-	pwd;
-	sleep 2;
-	sudo make clean install
-}
-
-dmenu() {
-	echo ""
-	echo " Getting ready to install dmenu"
-	cd dmenu;
-	pwd;
-	sleep 2;
-	sudo make clean install
+install-suckless() {
+	config-files/systems/install-dwm.sh
 }
 
 config-files() {
 	echo ""
 	echo " Getting ready config files"
-	sleep 2;
-	sudo cp config-files/dwm.desktop /usr/share/xsessions/dwm.desktop &&
-		echo " ### dwm.desktop entry has been copied"
-	cp -ar config-files/conky $HOME/.config/ &&
-		echo " ##### conky files had been copied";
-	mkdir ~/.dwm &&
-		echo " #### .dwm folder created";
-	cp -ar config-files/autostart.sh $HOME/.dwm/ &&
-		echo " #### autostart has been copied";
-	cp -ar config-files/sysact.sh $HOME/.dwm/ &&
-		echo " #### system account files has been copied"
+	echo ""
+	sleep 2
+
+	sudo cp config-files/configs/dwm.desktop /usr/share/xsessions/dwm.desktop &&
+	echo " dwm.desktop entry has been copied" || echo " I dunno what happend!!"
+	echo ""
+
+	## Conky directory
+	### Check for dir, if not found create it using the mkdir ###
+	dldir="$HOME/.config/conky"
+	[ ! -d "$dldir" ] && mkdir -p "$dldir" &&
+	echo " conky directory was created" || echo " conky directory already exist"
+	echo ""
+
+	cp -af config-files/configs/conky_live $HOME/.config/conky/ &&
+	cp -af config-files/configs/conky_conky_shortcuts_dwm $HOME/.config/conky/ &&
+	echo " conky files had been copied" || echo " Upsssss!!!"
+	echo ""
+
+	## DWM directory
+	### Check for dir, if not found create it using the mkdir ###
+	dldir2="$HOME/.dwm"
+	[ ! -d "$dldir2" ] && mkdir -p "$dldir2" &&
+	echo " dwm directory was created" || echo " dwm directory already exist"
+	echo ""
+
+	cp -af config-files/configs/autostart.sh $HOME/.dwm/ &&
+	echo " autostart has been copied" || echo " Holly Shhhhhh!!!"
+	echo ""
+
+	cp -af config-files/configs/sysact.sh $HOME/.dwm/ &&
+	echo " system account files has been copied" || echo " We have a problem again!!!"
+	echo ""
+
+	cp -af config-files/configs/dmenu-programs.sh $HOME/.dwm/ &&
+	echo " dmenu custom file has been copied" || echo " Not again!!!"
+	echo ""
+
+	cp -af config-files/configs/Xresources $HOME/.Xresources &&
+	echo " New Xresources file has been copied" || echo " Againnnn!!!"
+	echo ""
 }
 
 themes() {
@@ -106,20 +113,18 @@ until [ "$selection" = "0" ]; do
 	echo "  / _' \ \ /\ / / '_ ' _ \  "
 	echo " | (_| |\ V  V /| | | | | | "
 	echo "  \__,_| \_/\_/ |_| |_| |_| "
-	echo " --------------------------------"
-	echo " ### dwm -- slstatus -- dmenu ###"
-	echo " --------------------------------"
 	echo ""
-	echo " 1 - Install dwm"
-	echo " 2 - Install slstatus"
-	echo " 3 - Install dmemu"
-	echo " 4 - Copy (custom) config files"
-	echo " 5 - Themes"
-	echo " 6 - Keybindings"
+	echo " dwm is a dynamic window manager for X"
+	echo ""
+	echo " 1 - Install"
+	echo " 2 - Copy (custom) config files"
+	echo " 3 - Themes"
+	echo " 4 - Keybindings"
 	echo ""
 	echo " d - Edit dwm (config.h)"
 	echo " s - Edit slstatus (config.h)"
 	echo " m - Edit dmenu (config.h)"
+	echo ""
 	echo " 0 - Exit"
 	echo ""
 	echo -n " Enter selection [1 - 0] : "
@@ -127,12 +132,10 @@ until [ "$selection" = "0" ]; do
 	echo ""
 
 	case $selection in
-		1) clear; dwm            ; press_enter ;;
-		2) clear; slstatus       ; press_enter ;;
-		3) clear; dmenu          ; press_enter ;;
-		4) clear; config-files   ; press_enter ;;
-		5) clear; themes        ;;
-		6) clear; keybindings   ;;
+		1) clear; install-suckless ;;
+		2) clear; config-files   ; press_enter ;;
+		3) clear; themes        ;;
+		4) clear; keybindings   ;;
 		d) clear; dwm_edit      ;;
 		s) clear; slstatus_edit ;;
 		m) clear; dmenu_edit    ;;

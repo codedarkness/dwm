@@ -22,16 +22,16 @@
 #
 # -----------------------------------------------------------------
 
-dark-theme() {
-	config-files/themes/dwm-dark-theme.sh
+dark-color() {
+	config-files/themes/dwm-dark-color.sh
 }
 
-dracula-theme() {
-	config-files/themes/dwm-dracula-theme.sh
+dracula-color() {
+	config-files/themes/dwm-dracula-color.sh
 }
 
-green-theme() {
-	config-files/themes/dwm-green-theme.sh
+green-color() {
+	config-files/themes/dwm-green-color.sh
 }
 
 press_enter() {
@@ -48,14 +48,20 @@ incorrect_selection() {
 until [ "$selection" = "0" ]; do
 	clear
 	echo ""
-	echo " -----------------------------------------------"
-	echo " ###-----------   Color  Themes   -----------###"
-	echo " ##--- dwm tiling window  manager for X11 --- ##"
-	echo " -----------------------------------------------"
+	echo " DarknessCode"
+	echo "      _                     _____      _                 "
+	echo "     | |                   / ____|    | |                "
+	echo "   __| |_      ___ __ ___ | |     ___ | | ___  _ __ ___  "
+	echo "  / _' \ \ /\ / / '_ ' _ \| |    / _ \| |/ _ \| '__/ __| "
+	echo " | (_| |\ V  V /| | | | | | |___| (_) | | (_) | |  \__ \ "
+	echo "  \__,_| \_/\_/ |_| |_| |_|\_____\___/|_|\___/|_|  |___/ "
+	echo ""
+	echo " Change the color for dwm"
 	echo ""
 	echo " 1 - Dark Color Scheme"
 	echo " 2 - Dracula Color Scheme"
 	echo " 3 - Green Color Scheme"
+	echo ""
 	echo " 0 - Back"
 	echo ""
 	echo -n " Enter selection [1 - 0] : "
@@ -63,9 +69,9 @@ until [ "$selection" = "0" ]; do
 	echo ""
 
 	case $selection in
-		1) clear; dark-theme	  ; press_enter ;;
-		2) clear; dracula-theme	  ; press_enter ;;
-		3) clear; green-theme	  ; press_enter ;;
+		1) clear; dark-color	  ; press_enter ;;
+		2) clear; dracula-color	  ; press_enter ;;
+		3) clear; green-color	  ; press_enter ;;
 		0) clear; exit ;;
 		*) clear; incorrect_selection ; press_enter ;;
 	esac
