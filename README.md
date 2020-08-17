@@ -24,6 +24,7 @@ Patches added to dwm in this build:
 * autostart - programs when log in
 * center windows - center windows in toggle mode
 * uselesspag - add gaps between windows
+* pertag - have different layout in each tag
 
 ## dmenu Patches
 

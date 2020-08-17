@@ -81,15 +81,15 @@ keybindings() {
 }
 
 dwm_edit() {
-	vim dwm/config.h
+	vim config-files/systems/dwm/config.h
 }
 
 slstatus_edit() {
-	vim slstatus/config.h
+	vim config-files/systems/slstatus/config.h
 }
 
 dmenu_edit() {
-	vim dmenu/config.h
+	vim config-files/systems/dmenu/config.h
 }
 
 press_enter() {

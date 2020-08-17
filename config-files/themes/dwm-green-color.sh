@@ -27,32 +27,32 @@ echo ""
 sleep 2
 
 ## background color
-sed -i 's/col_gray1\[\]\s*    =\s* ".*";/col_gray1\[\]\       =\ "#222D31";/g' dwm/config.h &&
+sed -i 's/col_gray1\[\]\s*    =\s* ".*";/col_gray1\[\]\       =\ "#222D31";/g' config-files/systems/dwm/config.h &&
 echo " Background color has changed" || echo " Remember we have better days"
 echo ""
 
 ## border color unfocused windows
-sed -i 's/col_gray2\[\]\s*    =\s* ".*";/col_gray2\[\]\       =\ "#2F3D44";/g' dwm/config.h &&
+sed -i 's/col_gray2\[\]\s*    =\s* ".*";/col_gray2\[\]\       =\ "#2F3D44";/g' config-files/systems/dwm/config.h &&
 echo " Border color (unfocused) has changed" || echo " Shhhhh! you have a real problmen"
 echo ""
 
 ## foreground color (font)
-sed -i 's/col_gray3\[\]\s*    =\s* ".*";/col_gray3\[\]\       =\ "#D7D7D7";/g' dwm/config.h &&
+sed -i 's/col_gray3\[\]\s*    =\s* ".*";/col_gray3\[\]\       =\ "#D7D7D7";/g' config-files/systems/dwm/config.h &&
 echo " Foreground color (font) has changed" || echo " Did you break the matrix!!!"
 echo ""
 
 ## foreground color (font tags)
-sed -i 's/col_gray4\[\]\s*    =\s* ".*";/col_gray4\[\]\       =\ "#C0C5CE";/g' dwm/config.h &&
+sed -i 's/col_gray4\[\]\s*    =\s* ".*";/col_gray4\[\]\       =\ "#C0C5CE";/g' config-files/systems/dwm/config.h &&
 echo " Background color has changed" || echo " Try again or format your machine"
 echo ""
 
 ## foreground color (font tags)
-sed -i 's/col_gray5\[\]\s*    =\s* ".*";/col_gray5\[\]\       =\ "#556064";/g' dwm/config.h &&
+sed -i 's/col_gray5\[\]\s*    =\s* ".*";/col_gray5\[\]\       =\ "#556064";/g' config-files/systems/dwm/config.h &&
 echo " Window border color has changed" || echo " Not again what's wrong with you!!"
 echo ""
 
 ## border color focused windows and tags
-sed -i 's/col_cyan\[\]\s*     =\s* ".*";/col_cyan\[\]\        =\ "#4D5656";/g' dwm/config.h &&
+sed -i 's/col_cyan\[\]\s*     =\s* ".*";/col_cyan\[\]\        =\ "#4D5656";/g' config-files/systems/dwm/config.h &&
 echo " Boder color (focused/tags) has changed" || echo " Uppppssss!!!"
 echo ""
 
@@ -76,6 +76,7 @@ while true; do
 done
 
 echo ""
+
 while true; do
 	read -p "Re-install dwm [y - n] : " yn
 	case $yn in
