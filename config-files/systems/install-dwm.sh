@@ -31,7 +31,7 @@ install-dwm(){
 	echo ""
 
 	while true; do
-		read -p "Install dwm [y - n] : " yn
+		read -p " Install dwm [y - n] : " yn
 		case $yn in
 			[Yy]* )
 				sudo make clean install; break ;;
@@ -104,7 +104,6 @@ install-slstatus(){
 	done
 
 	echo ""
-
 	cd config-files/systems/slstatus
 	echo ""
 

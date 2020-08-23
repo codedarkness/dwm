@@ -71,23 +71,23 @@ while true; do
 			echo " Xresources has been copy" || echo " Upsss! we have a problem here" ; break ;;
 		[Nn]* )
 			break ;;
-		* ) echo "Please answer yes or no." ;;
+		* ) echo " Please answer yes or no." ;;
 	esac
 done
 
 echo ""
 
 while true; do
-	read -p "Re-install dwm [y - n] : " yn
+	read -p " Re-install dwm [y - n] : " yn
 	case $yn in
 		[Yy]* )
-			cd dwm;
-			pwd;
-			echo "";
+			cd config-files/systems/dwm
+			pwd
+			echo ""
 			sudo make clean install;
 			break ;;
 		[Nn]* )
-			echo "Don't forge to re-install dwm"; break ;;
-		* ) echo "Please answer yes or no." ;;
+			echo " Don't forge to re-install dwm"; break ;;
+		* ) echo " Please answer yes or no." ;;
 	esac
 done

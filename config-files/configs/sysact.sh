@@ -22,19 +22,38 @@
 #
 # -----------------------------------------------------------------
 
-# For non-systemd init systems.
-case "$(readlink -f /sbin/init)" in
-	*runit*) hib="sudo -A zzz" ;;
-	*openrc*) reb="sudo -A openrc-shutdown -r"; shut="sudo -A openrc-shutdown -p" ;;
+font="-fn 'Noto-11'"
+nb="-nb #222D31"
+sb="-sb #222D31"
+sf="-sf #FAF9FA"
+nf="-nf #839192"
+
+declare options=("Cancel
+Lock-Screen
+Exit
+Shutdown
+Reboot
+Suspend
+Hibernate
+Hybrid-Sleep
+Suspen-Hibernate")
+
+choice=$(
+	echo -e "${options[@]}" |
+	dmenu -i -p 'Select an Option: ' $font $nb $sb $sf $nf
+)
+
+case "$choice" in
+	Cancel)	exit 1 ;;
+	Lock-Screen)	blurlock ;;
+	Exit)		kill -TERM $(pidof -s dwm) ;;
+	Shutdown)	systemctl poweroff ;;
+	Reboot)		systemctl reboot ;;
+	Suspend)	systemctl suspend ;;
+	Hibernate)	systemctl hibernate ;;
+	Hybrid-Sleep)	systemctl hibernate ;;
+	Suspend-Hibernate)	systemctl suspend-then-hibernate ;;
+	*) exit 1 ;;
 esac
 
-cmds="\
- lock		blurlock
- exit		kill -TERM $(pidof -s dwm)
- hibernate	${hib:-sudo -A systemctl suspend-then-hibernate}
- reboot		${reb:-sudo -A reboot}
- shutdown	${shut:-sudo -A shutdown -h now}"
-
-choice="$(echo "$cmds" | cut -d'	' -f 1 | dmenu -b -i -fn 'Noto-12' -nb '#000000' -nf '#566573' -sf '#FAF9FA' -sb '#000000')" || exit 1
-
-`echo "$cmds" | grep "^$choice	" | cut -d '	' -f2-`
+"$choice"

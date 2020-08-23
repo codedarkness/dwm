@@ -93,15 +93,13 @@ static Key keys[] = {
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,			XK_r,      spawn,	   SHCMD("terminal -e ranger") },
 	{ MODKEY,			XK_p,	   spawn,	   SHCMD("terminal -e pyradio") },
+	{ MODKEY,			XK_c,	   spawn,	   SHCMD("terminal -e calcurse")},
+	{ MODKEY,			XK_v,	   spawn,	   SHCMD("terminal -e vim") },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,			XK_v,	   spawn,	   SHCMD("terminal -e vim") },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      spawn,          SHCMD("./.dwm/sysact.sh") },
@@ -113,7 +111,7 @@ static Key keys[] = {
 	{ 0,                            XK_Print,  spawn,          SHCMD("i3-scrot -d") },
 
 	/* open custom scripts dmenu */
-	{ MODKEY,                       XK_o,      spawn,          SHCMD("./.dwm/dmenu-programs.sh") },
+	{ MODKEY,                       XK_o,      spawn,          SHCMD("./Documents/scripts/dmenu-programs.sh") },
 	{ MODKEY|ControlMask,           XK_o,	   spawn,          SHCMD("terminal -e ./Documents/scripts/tremc_url.sh") },
 	{ MODKEY|ShiftMask,             XK_o,      spawn,          {.v = dmenucmd } },
 

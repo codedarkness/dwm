@@ -44,7 +44,7 @@ config-files() {
 	echo ""
 
 	cp -af config-files/configs/conky_live $HOME/.config/conky/ &&
-	cp -af config-files/configs/conky_conky_shortcuts_dwm $HOME/.config/conky/ &&
+	cp -af config-files/configs/conky_shortcuts_dwm $HOME/.config/conky/ &&
 	echo " conky files had been copied" || echo " Upsssss!!!"
 	echo ""
 
@@ -67,9 +67,18 @@ config-files() {
 	echo " dmenu custom file has been copied" || echo " Not again!!!"
 	echo ""
 
-	cp -af config-files/configs/Xresources $HOME/.Xresources &&
-	echo " New Xresources file has been copied" || echo " Againnnn!!!"
-	echo ""
+	while true; do
+		read -p " Copy Xresources [y - n] : " yn
+		case $yn in
+			[Yy]* )
+				cp -af config-files/configs/Xresources $HOME/.Xresources &&
+				echo " New Xresources file has been copied" || echo " Againnnn!!!"
+				echo "" ; break ;;
+			[Nn]* )
+				break ;;
+			* ) echo "Please answer yes or no." ;;
+		esac
+	done
 }
 
 themes() {
