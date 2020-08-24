@@ -40,7 +40,6 @@ static const Rule rules[] = {
 	 */
 	/* class      	  instance    title                tags mask     iscentered   isfloating   monitor */
 	{ "Gimp",     	  NULL,       NULL,                0,            0,		  0,           -1 },
-	{ "Firefox",  	  NULL,       NULL,                1 << 8,       0,		  0,           -1 },
 	{ "URxvt",    	  NULL,       "backup-system",     0,		 1,		  1,	       -1 },
 	{ "URxvt",    	  NULL,	      "tremc_url",         0,	         1,		  1,	       -1 },
 	{ "URxvt",	  NULL,	      "alsamixer",         0,		 1,		  1,	       -1 },
@@ -74,8 +73,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_recency", NULL };
-static const char *termcmd[]  = { "terminal", NULL };
+static const char *dmenucmd[] = { "dmenu_run", NULL };
+static const char *termcmd[]  = { "urxvt", NULL };
 
 /* volume commands */
 #include <X11/XF86keysym.h>
@@ -91,10 +90,11 @@ static Key keys[] = {
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,			XK_r,      spawn,	   SHCMD("terminal -e ranger") },
-	{ MODKEY,			XK_p,	   spawn,	   SHCMD("terminal -e pyradio") },
-	{ MODKEY,			XK_c,	   spawn,	   SHCMD("terminal -e calcurse")},
-	{ MODKEY,			XK_v,	   spawn,	   SHCMD("terminal -e vim") },
+	{ MODKEY,			XK_r,      spawn,	   SHCMD("urxvt -e ranger") },
+	{ MODKEY,			XK_p,	   spawn,	   SHCMD("urxvt -e pyradio") },
+	{ MODKEY,			XK_c,	   spawn,	   SHCMD("urxvt -e calcurse")},
+	{ MODKEY,			XK_v,	   spawn,	   SHCMD("urxvt -e vim") },
+	{ MODKEY,			XK_f,	   spawn,	   SHCMD("firefox") },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
@@ -111,14 +111,14 @@ static Key keys[] = {
 	{ 0,                            XK_Print,  spawn,          SHCMD("i3-scrot -d") },
 
 	/* open custom scripts dmenu */
-	{ MODKEY,                       XK_o,      spawn,          SHCMD("./Documents/scripts/dmenu-programs.sh") },
-	{ MODKEY|ControlMask,           XK_o,	   spawn,          SHCMD("terminal -e ./Documents/scripts/tremc_url.sh") },
+	{ MODKEY,                       XK_o,      spawn,          SHCMD("./.dwm/dmenu-programs.sh") },
+	{ MODKEY|ControlMask,           XK_o,	   spawn,          SHCMD("urxvt -e ./Documents/scripts/tremc_url.sh") },
 	{ MODKEY|ShiftMask,             XK_o,      spawn,          {.v = dmenucmd } },
 
 	/* open gui applications */
-	{ MODKEY,                       XK_F2,     spawn,          SHCMD("brave") },
+	{ MODKEY,                       XK_F2,     spawn,          SHCMD("firefox") },
 	{ MODKEY,                       XK_F3,     spawn,          SHCMD("pcmanfm") },
-	{ MODKEY,                       XK_F4,     spawn,          SHCMD("terminal -e vim './Documents/darkwiki/index.wiki'") },
+	{ MODKEY,                       XK_F4,     spawn,          SHCMD("urxvt -e vim './Documents/darkwiki/index.wiki'") },
 	{ MODKEY,                      XK_F12,     spawn,          SHCMD("blurlock") },
 
 	/* volume keys */

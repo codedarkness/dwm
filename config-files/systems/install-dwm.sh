@@ -34,7 +34,8 @@ install-dwm(){
 		read -p " Install dwm [y - n] : " yn
 		case $yn in
 			[Yy]* )
-				sudo make clean install; break ;;
+				sudo make clean install
+				cd ../../..; break ;;
 			[Nn]* )
 				break ;;
 			* ) echo "Please answer yes or no." ;;
@@ -57,7 +58,8 @@ install-dmenu(){
 		read -p " Install dmenu [y - n] : " yn
 		case $yn in
 			[Yy]* )
-				sudo make clean install; break ;;
+				sudo make clean install
+				cd ../../..; break ;;
 			[Nn]* )
 				break ;;
 			* ) echo "Please answer yes or no." ;;
@@ -111,7 +113,8 @@ install-slstatus(){
 		read -p " Install slstatus [y - n] : " yn
 		case $yn in
 			[Yy]* )
-				sudo make clean install; break ;;
+				sudo make clean install
+				cd ../../..; break ;;
 			[Nn]* )
 				break ;;
 			* ) echo "Please answer yes or no." ;;
