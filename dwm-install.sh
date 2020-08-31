@@ -90,15 +90,102 @@ keybindings() {
 }
 
 dwm_edit() {
-	vim config-files/systems/dwm/config.h
+	echo ""
+	echo " Edit dwm config.h and reinstall dwm"
+	echo ""
+	sleep 2
+
+	while true; do
+		read -p " Edit dwm (config.h) [y - n] : " yn
+		case $yn in
+			[Yy]* )
+				vim config-files/systems/dwm/config.h; break ;;
+			[Nn]* )
+				break ;;
+			* ) echo "Please answer yes or no." ;;
+		esac
+	done
+	echo ""
+
+	while true; do
+		read -p " Re-install dwm [y - n] : " yn
+		case $yn in
+			[Yy]* )
+				cd config-files/systems/dwm
+			        sudo make clean install
+				cd ../../.. ; break ;;
+			[Nn]* )
+				break ;;
+			* ) echo "Please answer yes or no." ;;
+		esac
+	done
+	echo ""
 }
 
 slstatus_edit() {
-	vim config-files/systems/slstatus/config.h
+	echo ""
+	echo " Edit slstatus config.h and reinstall slstatus"
+	echo ""
+	sleep 2
+
+	while true; do
+		read -p " Edit slstatus (config.h) [y - n] : " yn
+		case $yn in
+			[Yy]* )
+				vim config-files/systems/slstatus/config.h; break ;;
+			[Nn]* )
+				break ;;
+			* ) echo "Please answer yes or no." ;;
+		esac
+	done
+	echo ""
+
+	while true; do
+		read -p " Re-install slstatus [y - n] : " yn
+		case $yn in
+			[Yy]* )
+				cd config-files/systems/slstatus
+			        sudo make clean install
+				cd ../../.. ; break ;;
+			[Nn]* )
+				break ;;
+			* ) echo "Please answer yes or no." ;;
+		esac
+	done
+	echo ""
 }
 
 dmenu_edit() {
-	vim config-files/systems/dmenu/config.h
+	echo ""
+	echo " Edit dmenu config.h and reinstall dmenu"
+	echo ""
+	sleep 2
+
+	while true; do
+		read -p " Edit demnu (config.h) [y - n] : " yn
+		case $yn in
+			[Yy]* )
+				vim config-files/systems/dmenu/config.h; break ;;
+			[Nn]* )
+				break ;;
+			* ) echo "Please answer yes or no." ;;
+		esac
+	done
+	echo ""
+
+	while true; do
+		read -p " Re-install dmenu [y - n] : " yn
+		case $yn in
+			[Yy]* )
+				cd config-files/systems/dmenu
+				sudo make clean install
+			        cd ../../.. ; break ;;
+			[Nn]* )
+				break ;;
+			* ) echo "Please answer yes or no." ;;
+		esac
+	done
+	echo ""
 }
 
 press_enter() {
