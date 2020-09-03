@@ -46,13 +46,13 @@ sed -i 's/col_gray4\[\]\s*    =\s* ".*";/col_gray4\[\]\       =\ "#C0C5CE";/g' c
 echo " Background color has changed" || echo " Try again or format your machine"
 echo ""
 
-## foreground color (font tags)
-sed -i 's/col_gray5\[\]\s*    =\s* ".*";/col_gray5\[\]\       =\ "#556064";/g' config-files/systems/dwm/config.h &&
+## foreground color (window border)
+sed -i 's/col_gray5\[\]\s*    =\s* ".*";/col_gray5\[\]\       =\ "#0B5345";/g' config-files/systems/dwm/config.h &&
 echo " Window border color has changed" || echo " Not again what's wrong with you!!"
 echo ""
 
 ## border color focused windows and tags
-sed -i 's/col_cyan\[\]\s*     =\s* ".*";/col_cyan\[\]\        =\ "#4D5656";/g' config-files/systems/dwm/config.h &&
+sed -i 's/col_cyan\[\]\s*     =\s* ".*";/col_cyan\[\]\        =\ "#0B5345";/g' config-files/systems/dwm/config.h &&
 echo " Boder color (focused/tags) has changed" || echo " Uppppssss!!!"
 echo ""
 

@@ -32,7 +32,7 @@ echo " Background color has changed" || echo " Remember we have better days"
 echo ""
 
 ## border color unfocused windows
-sed -i 's/col_gray2\[\]\s*    =\s* ".*";/col_gray2\[\]\       =\ "#383C4A";/g' config-files/systems/dwm/config.h &&
+sed -i 's/col_gray2\[\]\s*    =\s* ".*";/col_gray2\[\]\       =\ "#2F3D44";/g' config-files/systems/dwm/config.h &&
 echo " Border color (unfocused) has changed" || echo " Shhhhh! you have a real problmen"
 echo ""
 
@@ -52,7 +52,7 @@ echo " Window border color has changed" || echo " Not again what's wrong with yo
 echo ""
 
 ## border color focused windows and tags
-sed -i 's/col_cyan\[\]\s*     =\s* ".*";/col_cyan\[\]\        =\ "#383A59";/g' config-files/systems/dwm/config.h &&
+sed -i 's/col_cyan\[\]\s*     =\s* ".*";/col_cyan\[\]\        =\ "#5A5AA4";/g' config-files/systems/dwm/config.h &&
 echo " Boder color (focused/tags) has changed" || echo " Uppppssss!!!"
 echo ""
 
