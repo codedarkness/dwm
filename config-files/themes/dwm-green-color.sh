@@ -32,7 +32,7 @@ echo " Background color has changed" || echo " Remember we have better days"
 echo ""
 
 ## border color unfocused windows
-sed -i 's/col_gray2\[\]\s*    =\s* ".*";/col_gray2\[\]\       =\ "#282A36";/g' config-files/systems/dwm/config.h &&
+sed -i 's/col_gray2\[\]\s*    =\s* ".*";/col_gray2\[\]\       =\ "#2F3D44";/g' config-files/systems/dwm/config.h &&
 echo " Border color (unfocused) has changed" || echo " Shhhhh! you have a real problmen"
 echo ""
 
