@@ -18,12 +18,12 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=11" };
 static const char dmenufont[]       = "monospace:size=11";
-static const char col_gray1[]       = "#1E1F29"; /* backgroun color */
+static const char col_gray1[]       = "#222D31"; /* backgroun color */
 static const char col_gray2[]       = "#282A36";
-static const char col_gray3[]       = "#C0C5CE";
-static const char col_gray4[]       = "#D7D7D7";
-static const char col_gray5[]       = "#5A5AA4";
-static const char col_cyan[]        = "#5A5AA4";
+static const char col_gray3[]       = "#D7D7D7";
+static const char col_gray4[]       = "#C0C5CE";
+static const char col_gray5[]       = "#0B5345";
+static const char col_cyan[]        = "#0B5345";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -106,7 +106,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
 	/* My Keybindings */
-	{ MODKEY,                       XK_F2,     spawn,          SHCMD("brave-browser") },
+	{ MODKEY,                       XK_F2,     spawn,          SHCMD("chromium") },
 	{ MODKEY,                       XK_F3,     spawn,          SHCMD("pcmanfm") },
 	{ MODKEY,                       XK_F12,    spawn,          SHCMD("blurlock") },
 
@@ -115,7 +115,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_c,	   spawn,	   SHCMD("urxvt -e calcurse")},
 	{ MODKEY,			XK_v,	   spawn,	   SHCMD("urxvt -e vim") },
 	{ MODKEY,                       XK_t,      spawn,          SHCMD("urxvt -e tg") },
-	{ MODKEY,			XK_w,	   spawn,	   SHCMD("brave") },
+	{ MODKEY,			XK_w,	   spawn,	   SHCMD("chromium") },
 
 	{ MODKEY,                       XK_0,      spawn,          SHCMD("./.dwm/sysact.sh") },
 	{ MODKEY,                       XK_o,      spawn,          SHCMD("./.dwm/dmenu-programs.sh") },
@@ -125,7 +125,7 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,   	        XK_o,      spawn,          SHCMD("./Documents/myScripts/connect.sh") },
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("urxvt -e vim './Documents/darkwiki/index.wiki'") },
 
-	{ 0,                            XK_Print,  spawn,          SHCMD("i3-scrot -d") },
+	{ 0,                            XK_Print,  spawn,          SHCMD("dc-scrot") },
 
 	/* volume keys */
 	{ 0,                 XF86XK_AudioMute,     spawn,          {.v = mutevol } },
