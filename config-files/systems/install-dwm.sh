@@ -91,9 +91,14 @@ install-slstatus(){
 
 						sudo apt install -y x11-xserver-utils
 
+					# check if xbps is installed
+					elif which xbps-install > /dev/null 2>&1; then
+
+						sudo xbps-install -Sy xsetroot
+
 					else
 
-						echo " Your system is not Arch or Debian Based System"
+						echo " Your system is not compatible with this script..."
 					fi
 
 					else

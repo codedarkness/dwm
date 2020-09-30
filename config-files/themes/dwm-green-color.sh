@@ -88,10 +88,39 @@ echo " nitrogen background color has been applied" || echo " Maybe is you!!!!"
 echo ""
 
 ## change background color in slick-greeter lightdm
-sudo sed -i 's/background-color=.*/background-color=#222D31/g' /etc/lightdm/slick-greeter.conf &&
-sudo sed -i 's/theme-name=.*/theme-name=Adapta-Nokto-Eta-Maia/g' /etc/lightdm/slick-greeter.conf &&
-sudo sed -i 's/icon-theme-name=.*/icon-theme-name=Adapta-Maia/g' /etc/lightdm/slick-greeter.conf &&
-echo " Slick-Greeter has been changed" || echo " Upsss!!!!"
+while true; do
+	read -p " You use slick-greeter (Arch Linux, Debian) [y - n] : " yn
+	case $yn in
+		[Yy]* )
+			sudo sed -i 's/background-color=.*/background-color=#222D31/g' /etc/lightdm/slick-greeter.conf &&
+			sudo sed -i 's/theme-name=.*/theme-name=Adapta-Nokto-Eta-Maia/g' /etc/lightdm/slick-greeter.conf &&
+			sudo sed -i 's/icon-theme-name=.*/icon-theme-name=Adapta-Maia/g' /etc/lightdm/slick-greeter.conf &&
+			echo " Slick-Greeter has been changed" || echo " Upsss!!!!"
+			echo "" ; break ;;
+		[Nn]* )
+			break ;;
+		* ) echo " Please answer yes or no." ;;
+	esac
+done
+echo ""
+
+## change background color in lightdm-mini-greeter
+while true; do
+	read -p " You use lightdm-mini-greeter (Void Linux) [y - n] : " yn
+	case $yn in
+		[Yy]* )
+			sudo sed -i 's/text-color = ".*"/text-color = "#C0C5CE"/g' /etc/lightdm/lightdm-mini-greeter.conf &&
+			sudo sed -i 's/background-color = ".*"/background-color = "#222D31"/g' /etc/lightdm/lightdm-mini-greeter.conf &&
+			sudo sed -i 's/window-color = ".*"/window-color = "#222D31"/g' /etc/lightdm/lightdm-mini-greeter.conf &&
+			sudo sed -i 's/border-color = ".*"/border-color = "#0B5345"/g' /etc/lightdm/lightdm-mini-greeter.conf &&
+			sudo sed -i 's/password-background-color = ".*"/password-background-color = "#222D31"/g' /etc/lightdm/lightdm-mini-greeter.conf &&
+			echo " lightdm-mini-greeter has been changed" || echo " Upsss!!!!"
+			echo "" ; break ;;
+		[Nn]* )
+			break ;;
+		* ) echo " Please answer yes or no." ;;
+	esac
+done
 echo ""
 
 while true; do

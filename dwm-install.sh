@@ -9,8 +9,8 @@
 # https://github.com/codedarkness
 # -----------------------------------------------------------------
 #
-#        FILE: dwm-slstatus-install.sh
-#       USAGE: ./dwm-slstatus-install.sh
+#        FILE: dwm-install.sh
+#       USAGE: ./dwm-install.sh
 #
 # DESCRIPTION: install dwm, slstatus  and copy custom config files
 #	       this is a minimal configuration of dwm and slstatus
@@ -31,6 +31,13 @@ config-files() {
 	echo " Getting ready config files"
 	echo ""
 	sleep 2
+
+	## xsessions directory (not present in void linux)
+	### Check for dir, if not found create it using the mkdir ###
+	xsessions="/usr/share/xsessions"
+	[ ! -d "$xsessions" ] && sudo mkdir -p "$xsessions" &&
+	echo " xsessions directory was created" || echo " xsessions directory already exist"
+	echo ""
 
 	sudo cp config-files/configs/dwm.desktop /usr/share/xsessions/dwm.desktop &&
 	echo " dwm.desktop entry has been copied" || echo " I dunno what happend!!"
