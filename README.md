@@ -11,8 +11,8 @@ This script just install a custom build for:
 * *dwm*
 * *dmenu*
 * *slstatus*
-* Copy custom files (autostart.sh and conky)
-* Color Schemes for dwm (config.h)
+* Copy custom files
+* Change color schemes
 
 Install *xsetroot* this application can manage the status bar with plain text and bash scripts.
 
@@ -36,36 +36,18 @@ Patches added to dmenu in this build:
 
 ![dwm - darknesscode](https://github.com/codedarkness/dwm-slstatus/blob/master/config-files/dwm-b.png)
 
-## Software
-
-Here are the software that always install in my systems:
-
-* Compton
-* Ranger file manager
-* Nitrogen
-* Volumeicon
-* nm-applet
-* xfce4-power-manager
-* pacmac-tray
-* xautolock (blurlock)
-* ff-theme-util
-* fix_xcursor
-* bash (can be change)
-* conky
-* dnust
-
 ## Helpfull keybindings for this installation
 
-| Keybinding  | Action               |
-| :---------  | :------------------  |
-| MOD+Enter   | Open terminal (bash) |
-| MOD+r       | Ranger File Manager  |
-| MOD+v       | Vim                  |
-| MOD+Shift+o | dmenu_recency        |
-| MOD+F12     | Lock screen          |
-| MOD+0	      | System account       |
-| MOD+Shift+q | Quit                 |
+| Keybinding  | Action                |
+| :---------  | :------------------   |
+| MOD+Enter   | Open terminal (urxvt) |
+| MOD+r       | Ranger File Manager   |
+| MOD+v       | Vim                   |
+| MOD+Shift+o | dmenu_run             |
+| MOD+F12     | Lock screen           |
+| MOD+0       | System account        |
+| MOD+Shift+q | Quit                  |
 
 Add your keybinings in config.h
 
-To lazzy! that's why i use *Manjaro* or *Debian* to install my base system and work from that.
+**dwm** is my windows manager of choice. I use it in **Arch Linux**, **Debian** and **Void Linux**
