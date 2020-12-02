@@ -63,20 +63,6 @@ sed -i 's/\[\SchemeOut\]\  = { ".*", ".*" },/\[\SchemeOut\]\  = { "#000000", "#1
 echo " dmenus colors applied" || echo " Sorryyy!!!"
 echo ""
 
-## dmenu system account
-sed -i 's/nb="-nb #.*"/nb="-nb #14161B"/g' ~/.dwm/sysact.sh &&
-sed -i 's/sb="-sb #.*"/sb="-sb #14161B"/g' ~/.dwm/sysact.sh &&
-sed -i 's/nf="-nf #.*"/nf="-nf #383A59"/g' ~/.dwm/sysact.sh &&
-echo " dmenu colors has canged" || echo " Now what? try agin!"
-echo ""
-
-## dmenu custom
-sed -i 's/nb="-nb #.*"/nb="-nb #14161B"/g' ~/.dwm/dmenu-programs.sh &&
-sed -i 's/sb="-sb #.*"/sb="-sb #14161B"/g' ~/.dwm/dmenu-programs.sh &&
-sed -i 's/nf="-nf #.*"/nf="-nf #383A59"/g' ~/.dwm/dmenu-programs.sh &&
-echo " dmenu programs colors has canged" || echo " Upssss!!!!"
-echo ""
-
 ## change background color dnustrc
 sed -i 's/background\ = .*/background\ = \"#14161B"/g' $HOME/.config/dunst/dunstrc &&
 echo " dnust color scheme has been applied" || echo " No way!!!!"

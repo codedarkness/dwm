@@ -63,20 +63,6 @@ sed -i 's/\[\SchemeOut\]\  = { ".*", ".*" },/\[\SchemeOut\]\  = { "#000000", "#2
 echo " dmenus colors applied" || echo " Sorryyy!!!"
 echo ""
 
-## dmenu system account
-sed -i 's/nb="-nb #.*"/nb="-nb #222D31"/g' ~/.dwm/sysact.sh &&
-sed -i 's/sb="-sb #.*"/sb="-sb #222D31"/g' ~/.dwm/sysact.sh &&
-sed -i 's/nf="-nf #.*"/nf="-nf #4D5656"/g' ~/.dwm/sysact.sh &&
-echo " dmenu colors has canged" || echo " Now what? try agin!"
-echo ""
-
-## dmenu custom
-sed -i 's/nb="-nb #.*"/nb="-nb #222D31"/g' ~/.dwm/dmenu-programs.sh &&
-sed -i 's/sb="-sb #.*"/sb="-sb #222D31"/g' ~/.dwm/dmenu-programs.sh &&
-sed -i 's/nf="-nf #.*"/nf="-nf #4D5656"/g' ~/.dwm/dmenu-programs.sh &&
-echo " dmenu programs colors has canged" || echo " Upssss!!!!"
-echo ""
-
 ## change background color dnustrc
 sed -i 's/background\ = .*/background\ = \"#222D31"/g' $HOME/.config/dunst/dunstrc &&
 echo " dnust color scheme has been applied" || echo " No way!!!!"
@@ -142,7 +128,6 @@ while true; do
 	case $yn in
 		[Yy]* )
 			cd config-files/systems/dwm
-			pwd
 			echo ""
 			sudo make clean install
 			cd ../../..;
@@ -160,7 +145,6 @@ while true; do
 	case $yn in
 		[Yy]* )
 			cd config-files/systems/dmenu
-			pwd
 			echo ""
 			sudo make clean install;
 			break ;;
