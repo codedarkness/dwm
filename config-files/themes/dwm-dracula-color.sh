@@ -58,7 +58,7 @@ echo ""
 
 ## dmenu
 sed -i 's/\[\SchemeNorm\]\ = { ".*", ".*" },/\[\SchemeNorm\]\ = { "#383A59", "#1E1F29" },/g' config-files/systems/dmenu/config.h &&
-sed -i 's/\[\SchemeSel\]\  = { ".*", ".*" },/\[\SchemeSel\]\  = { "#FAF9FA", "#1E1F29" },/g' config-files/systems/dmenu/config.h &&
+sed -i 's/\[\SchemeSel\]\  = { ".*", ".*" },/\[\SchemeSel\]\  = { "#FAF9FA", "#383A59" },/g' config-files/systems/dmenu/config.h &&
 sed -i 's/\[\SchemeOut\]\  = { ".*", ".*" },/\[\SchemeOut\]\  = { "#000000", "#1E1F29" },/g' config-files/systems/dmenu/config.h &&
 echo " dmenus colors applied" || echo " Sorryyy!!!"
 echo ""
