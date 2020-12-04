@@ -79,9 +79,9 @@ static const char *termcmd[]  = { "urxvt", NULL };
 /* volume commands */
 #include <X11/XF86keysym.h>
 
-static const char *mutevol[]	 = { "amixer", "-q", "set", "Master", "toggle", NULL };
+static const char *mutevol[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 static const char *upvol[]	 = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
-static const char *downvol[]	 = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
