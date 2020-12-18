@@ -1,4 +1,4 @@
-# Stat with dwm
+# Start with dwm
 
 dwm is a dynamic window manager for x11. It manage windows in tiled, monocle and floating layouts. *dwm* is simple and easy to use.
 
@@ -8,13 +8,13 @@ The MODKEY4 = Windows Key
 
 | Keys        | Action               |
 | :---------- | :------------------- |
-| MOD+Enter   | Open Terminal (bash) |
+| MOD+Enter   | Open Terminal (urxvt)|
 | MOD+q       | Close Window         |
-| MOD+Shit+q  | Exit dwm	     |
+| MOD+Shit+q  | Exit dwm	         |
 | MOD+r       | Ranger Filemanager   |
 | MOD+v       | Open Vim             |
 | MOD+F11     | Reboot               |
-| MOD+F12     | Shutdown	     |
+| MOD+F12     | Shutdown	     	 |
 
 For more keybindings check the config.h file.
 

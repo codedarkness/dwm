@@ -21,44 +21,42 @@
 #
 # -----------------------------------------------------------------
 
-font="-fn Noto-12"
-nb="-nb #222D31"
-sb="-sb #222D31"
-sf="-sf #FAF9FA"
-nf="-nf #4D5656"
+font="-fn Noto-10"
 
-declare options=("Brave
-Calcurse
-Filezilla
+terminal="urxvt"
+
+declare options=("AppFinder
 Gimp
-Htop
 LibreOffice
+Sigil
+Calibre
+FileManager
+Htop
 Mutt
 PyRadio
 Ranger
-Teamviewer
 Telegram
 Vim")
 
 choice=$(
 	echo -e "${options[@]}" |
-	dmenu -i -p 'Open Program: ' $font $nb $sb $sf $nf
+	dmenu -i -p ' Open Program : ' $font
 )
 
 case "$choice" in
 	quit)        echo "Program terminated." && exit 1 ;;
-	Brave)       choice=brave ;;
-	Calcurse)    exec terminal -e calcurse ;;
-	Filezilla)   choice=filezilla ;;
+	AppFinder)	 choice=xfce4-appfinder ;;
 	Gimp)        choice=gimp ;;
-	Htop)        exec terminal -e htop ;;
 	LibreOffice) choice=libreoffice ;;
-	Mutt)	     exec terminal -e mutt ;;
-	PyRadio)     exec terminal -e pyradio ;;
-	Ranger)	     exec terminal -e ranger ;;
-	Teamviewer)  choice=teamviewer ;;
-	Telegram)    choice=telegram-desktop ;;
-	Vim)         exec terminal -e vim ;;
+	Sigil) 		 choice=sigil ;;
+	Calibre)	 choice=calibre ;;
+	FileManager) choice=pcmanfm ;;
+	Htop)        exec $terminal -e htop ;;
+	Mutt)	     exec $terminal -e mutt ;;
+	PyRadio)     exec $terminal -e pyradio ;;
+	Ranger)	     exec $terminal -e ranger ;;
+	Telegram)    exec $terminal -e tg ;;
+	Vim)         exec $terminal -e vim ;;
 	*) exit 1 ;;
 esac
 

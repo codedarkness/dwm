@@ -25,7 +25,3 @@ slstatus &
 nitrogen --restore &
 xfce4-power-manager &
 xautolock -time 10 -locker blurlock &
-
-## conky
-#conky -c $HOME/.config/conky/conky_live &
-#conky -c $HOME/.config/conky/conky_shortcuts_dwm &

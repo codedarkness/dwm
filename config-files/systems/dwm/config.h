@@ -40,8 +40,6 @@ static const Rule rules[] = {
 	 */
 	/* class      	  instance    title                tags mask     iscentered   isfloating   monitor */
 	{ "Gimp",     	  NULL,       NULL,                0,            0,		  0,           -1 },
-	{ "URxvt",    	  NULL,       "backup-system",     0,		 	 1,		  1,	       -1 },
-	{ "URxvt",    	  NULL,	      "tremc_url",         0,	         1,		  1,	       -1 },
 	{ "URxvt",	 	  NULL,	      "alsamixer",         0,			 1,		  1,	       -1 },
 	{ "Nitrogen",	  NULL,	      NULL,	         	   0,	         1,       1,           -1 },
 	{ "MPlayer",	  NULL,       NULL,                0,            1,       1,           -1 },
@@ -108,7 +106,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
 	/* My Keybindings */
-	{ MODKEY,                       XK_F2,     spawn,          SHCMD("firefox") },
+	{ MODKEY,                       XK_F2,     spawn,          SHCMD("brave") },
 	{ MODKEY,                       XK_F3,     spawn,          SHCMD("pcmanfm") },
 	{ MODKEY,                       XK_F12,    spawn,          SHCMD("blurlock") },
 
@@ -116,7 +114,6 @@ static Key keys[] = {
 	{ MODKEY,					   XK_p,	   spawn,	   	   SHCMD("urxvt -e pyradio") },
 	{ MODKEY,					   XK_c,	   spawn,	   	   SHCMD("urxvt -e calcurse")},
 	{ MODKEY,					   XK_v,	   spawn,	   	   SHCMD("urxvt -e vim") },
-	{ MODKEY,					   XK_f,	   spawn,	   	   SHCMD("firefox") },
 
 	{ MODKEY,                       XK_0,      spawn,          SHCMD("./.dwm/sysact.sh") },
 	{ MODKEY,                       XK_o,      spawn,          SHCMD("./.dwm/dmenu-programs.sh") },
