@@ -5,7 +5,7 @@
 # | |_| | (_| | |  |   <| | | |  __/\__ \__ \ |__| (_) | (_| |  __/
 # |____/ \__,_|_|  |_|\_\_| |_|\___||___/___/\____\___/ \__,_|\___|
 # -----------------------------------------------------------------
-# https://darkncesscode.com
+# https://darkncesscode.xyz
 # https://github.com/codedarkness
 # -----------------------------------------------------------------
 #
@@ -16,7 +16,7 @@
 #	       this is a minimal configuration of dwm and slstatus
 #
 #      AUTHOR: DarknessCode
-#       EMAIL: admin@darknesscode.com
+#       EMAIL: achim@darknesscode.xyz
 #
 #     CREATED: 04-15-2020
 #

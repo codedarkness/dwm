@@ -5,7 +5,7 @@
 # | |_| | (_| | |  |   <| | | |  __/\__ \__ \ |__| (_) | (_| |  __/
 # |____/ \__,_|_|  |_|\_\_| |_|\___||___/___/\____\___/ \__,_|\___|
 # -----------------------------------------------------------------
-# https://darkncesscode.com
+# https://darkncesscode.xyz
 # https://github.com/codedarkness
 # -----------------------------------------------------------------
 #
@@ -15,12 +15,13 @@
 # DESCRIPTION: autostart file for dwm
 #
 #      AUTHOR: DarknessCode
-#       EMAIL: admin@darknesscode.com
+#       EMAIL: achim@darknesscode.xyz
 #
 #     CREATED: 05-05-2020 04:12
 #
 # -----------------------------------------------------------------
 
+lxsession &
 slstatus &
 nitrogen --restore &
 xfce4-power-manager &

@@ -4,7 +4,7 @@
 ## | |_| | (_| | |  |   <| | | |  __/\__ \__ \ |__| (_) | (_| |  __/
 ## |____/ \__,_|_|  |_|\_\_| |_|\___||___/___/\____\___/ \__,_|\___|
 ## -----------------------------------------------------------------
-## https://darkncesscode.com
+## https://darkncesscode.xyz
 ## https://github.com/codedarkness
 ## ---------------------------------------------------------------*/
 
@@ -110,10 +110,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F3,     spawn,          SHCMD("pcmanfm") },
 	{ MODKEY,                       XK_F12,    spawn,          SHCMD("blurlock") },
 
-	{ MODKEY,				       XK_r,	   spawn,	   	   SHCMD("urxvt -e ranger") },
-	{ MODKEY,					   XK_p,	   spawn,	   	   SHCMD("urxvt -e pyradio") },
-	{ MODKEY,					   XK_c,	   spawn,	   	   SHCMD("urxvt -e calcurse")},
-	{ MODKEY,					   XK_v,	   spawn,	   	   SHCMD("urxvt -e vim") },
+	{ MODKEY,				       	XK_r,	   spawn,	   	   SHCMD("urxvt -e ranger") },
+	{ MODKEY,					   	XK_p,	   spawn,	   	   SHCMD("urxvt -e pyradio") },
+	{ MODKEY,					   	XK_c,	   spawn,	   	   SHCMD("urxvt -e calcurse")},
+	{ MODKEY,					   	XK_v,	   spawn,	   	   SHCMD("urxvt -e vim") },
 
 	{ MODKEY,                       XK_0,      spawn,          SHCMD("./.dwm/sysact.sh") },
 	{ MODKEY,                       XK_o,      spawn,          SHCMD("./.dwm/dmenu-programs.sh") },

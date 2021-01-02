@@ -5,7 +5,7 @@
 # | |_| | (_| | |  |   <| | | |  __/\__ \__ \ |__| (_) | (_| |  __/
 # |____/ \__,_|_|  |_|\_\_| |_|\___||___/___/\____\___/ \__,_|\___|
 # -----------------------------------------------------------------
-# https://darkncesscode.com
+# https://darkncesscode.xyz
 # https://github.com/codedarkness
 # -----------------------------------------------------------------
 #
@@ -16,7 +16,7 @@
 # DESCRIPTION: lock, restart, hibernate and shutdown your computer
 #
 #      AUTHOR: DarknessCode
-#       EMAIL: admin@darknesscode.com
+#       EMAIL: achim@darknesscode.xyz
 #
 #     CREATED: 05-25-2020 6:10
 #
@@ -33,7 +33,7 @@ Suspend")
 
 choice=$(
 	echo -e "${options[@]}" |
-	dmenu -i -p 'Select an Option: ' $font $nb $sb $sf $nf
+	dmenu -i -p 'Select an Option: ' $font
 )
 
 case "$choice" in
