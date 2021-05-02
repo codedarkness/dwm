@@ -42,7 +42,7 @@ static const Rule rules[] = {
 	{ "Gimp",     	  NULL,       NULL,                0,            0,		  0,           -1 },
 	{ "URxvt",	 	  NULL,	      "alsamixer",         0,			 1,		  1,	       -1 },
 	{ "Nitrogen",	  NULL,	      NULL,	         	   0,	         1,       1,           -1 },
-	{ "MPlayer",	  NULL,       NULL,                0,            1,       1,           -1 },
+	{ "mpv",		  NULL,       NULL,                0,            1,       1,           -1 },
 	{ "Lxappearance", NULL,	      NULL,                0,		 	 1,		  1,	       -1 },
 };
 
@@ -84,9 +84,11 @@ static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", "unmute
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("st") },
 	{ MODKEY|ShiftMask,             XK_o,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
+	{ MODKEY|ShiftMask,             XK_x,      quit,           {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -106,19 +108,23 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
 	/* My Keybindings */
-	{ MODKEY,                       XK_F2,     spawn,          SHCMD("brave") },
-	{ MODKEY,                       XK_F3,     spawn,          SHCMD("pcmanfm") },
-	{ MODKEY,                       XK_F12,    spawn,          SHCMD("blurlock") },
+	{ MODKEY,           XK_F2,     spawn,      SHCMD("brave") },
+	{ MODKEY,           XK_F3,     spawn,      SHCMD("pcmanfm") },
+	{ MODKEY,           XK_F11,    spawn,      SHCMD("./.dwm/nmcli/networkmanager_dmenu") },
+	{ MODKEY,           XK_F12,    spawn,      SHCMD("blurlock") },
 
-	{ MODKEY,				       	XK_r,	   spawn,	   	   SHCMD("urxvt -e ranger") },
-	{ MODKEY,					   	XK_p,	   spawn,	   	   SHCMD("urxvt -e pyradio") },
-	{ MODKEY,					   	XK_c,	   spawn,	   	   SHCMD("urxvt -e calcurse")},
-	{ MODKEY,					   	XK_v,	   spawn,	   	   SHCMD("urxvt -e vim") },
+	{ MODKEY,			XK_r,      spawn,	   SHCMD("urxvt -e ranger") },
+	{ MODKEY,			XK_p,	   spawn,	   SHCMD("urxvt -e pyradio") },
+	{ MODKEY,			XK_c,	   spawn,	   SHCMD("urxvt -e calcurse")},
+	{ MODKEY,			XK_v,	   spawn,	   SHCMD("urxvt -e vim") },
+	{ MODKEY,           XK_t,      spawn,      SHCMD("urxvt -e tg") },
+	{ MODKEY,           XK_m,      spawn,      SHCMD("urxvt -e mutt") },
+	{ MODKEY,           XK_w,      spawn,      SHCMD("brave") },
 
-	{ MODKEY,                       XK_0,      spawn,          SHCMD("./.dwm/sysact.sh") },
-	{ MODKEY,                       XK_o,      spawn,          SHCMD("./.dwm/dmenu-programs.sh") },
+	{ MODKEY,           XK_0,      spawn,      SHCMD("./.dwm/sysact.sh") },
+	{ MODKEY,           XK_o,      spawn,      SHCMD("./.dwm/dmenu-programs.sh") },
 
-	{ 0,                            XK_Print,  spawn,          SHCMD("dc-scrot") },
+	{ 0,                XK_Print,  spawn,      SHCMD("dc-scrot -d") },
 
 	/* volume keys */
 	{ 0,                 XF86XK_AudioMute,     spawn,          {.v = mutevol } },
@@ -153,4 +159,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-

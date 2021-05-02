@@ -129,6 +129,30 @@ install-slstatus(){
 	echo ""
 }
 
+install-st(){
+	echo ""
+	echo " Installing st (simple terminal)"
+	echo ""
+	sleep 2
+
+	cd config-files/systems/st
+	echo ""
+
+	while true; do
+		read -p " Install st (simple terminal) [y - n] : " yn
+		case $yn in
+			[Yy]* )
+				sudo make clean install
+				cd ../../..; break ;;
+			[Nn]* )
+				break ;;
+			* ) echo "Please answer yes or no." ;;
+		esac
+	done
+
+	echo ""
+}
+
 press_enter() {
 	echo ""
 	echo -n " Press Enter To Continue"
@@ -156,6 +180,7 @@ until [ "$selection" = "0" ]; do
 	echo " 1 - dwm"
 	echo " 2 - dmenu"
 	echo " 3 - slstatus (status bar)"
+	echo " 4 - st (simple terminal)"
 	echo ""
 	echo " 0 - Back"
 	echo ""
@@ -167,6 +192,7 @@ until [ "$selection" = "0" ]; do
 		1) clear; install-dwm      ; press_enter ;;
 		2) clear; install-dmenu    ; press_enter ;;
 		3) clear; install-slstatus ; press_enter ;;
+		4) clear; install-st	   ; press_enter ;;
 		0) clear; exit ;;
 		*) clear; incorrect_selection ; press_enter ;;
 	esac

@@ -79,5 +79,5 @@ static const struct arg args[] = {
 	{ disk_free,"SSD %s : ",   "/" },
 	/* { battery_perc, "BAT %s% : ", "BAT0" }, */
 	{ run_command, "VOL %s%% : ", "/bin/sh -c \"amixer get Master | tail -n1 | grep -Po '\\[\\K[^%]*' | head -n1\"" },
-	{ datetime, "%s",          "%a %-d %b %I:%M " },
+	{ datetime, "%s", "%a %-d %b %I:%M " },
 };

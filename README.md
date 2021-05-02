@@ -11,6 +11,7 @@ This script just install a custom build for:
 * *dwm*
 * *dmenu*
 * *slstatus*
+* *st*
 * Copy custom files
 * Change color schemes
 
@@ -40,18 +41,25 @@ Patches added to dmenu in this build:
 
 ## Helpfull keybindings for this installation
 
-| Keybinding  | Action                |
-| :---------  | :------------------   |
-| MOD+Enter   | Open terminal (urxvt) |
-| MOD+r       | Ranger File Manager   |
-| MOD+v       | Vim                   |
-| MOD+Shift+o | dmenu_run             |
-| MOD+F12     | Lock screen           |
-| MOD+0       | System account        |
-| MOD+Shift+q | Quit                  |
+| Keybinding      | Action                |
+| :---------      | :------------------   |
+| MOD+Enter       | Open terminal (urxvt) |
+| MOD+Shift+Enter | Open terminal (st)    |
+| MOD+r           | Ranger File Manager   |
+| MOD+v           | Vim                   |
+| MOD+Shift+o     | dmenu_run             |
+| MOD+0           | System account        |
+| MOD+Shift+q     | Quit                  |
+| MOD+F11         | NetworkManger dmenu   |
+| MOD+F12         | Lock screen           |
 
 Add your keybinings in config.h
 
 **dwm** is my windows manager of choice. I use it in **Arch Linux**, **Debian** and **Void Linux**
 
 ![dwm - darknesscode](https://github.com/codedarkness/dwm-slstatus/blob/master/config-files/dwm-debian.png)
+
+### Note
+
+Added [st](https://github.com/LukeSmithxyz/st) From Luke Smith repo.
+Added [NetworkManager-dmenu](https://github.com/firecat53/networkmanager-dmenu) From Firecat53 repo.

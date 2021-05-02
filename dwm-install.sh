@@ -50,11 +50,6 @@ config-files() {
 	echo " conky directory was created" || echo " conky directory already exist"
 	echo ""
 
-	cp -af config-files/configs/conky_live $HOME/.config/conky/ &&
-	cp -af config-files/configs/conky_shortcuts_dwm $HOME/.config/conky/ &&
-	echo " conky files had been copied" || echo " Upsssss!!!"
-	echo ""
-
 	## DWM directory
 	### Check for dir, if not found create it using the mkdir ###
 	dldir2="$HOME/.dwm"
@@ -72,6 +67,10 @@ config-files() {
 
 	cp -af config-files/configs/dmenu-programs.sh $HOME/.dwm/ &&
 	echo " dmenu custom file has been copied" || echo " Not again!!!"
+	echo ""
+
+	cp -ar config-files/configs/nmcli/ $HOME/.dwm/ &&
+	echo " networkmanager demnu has been copied" || echo " We have a problem again!!!"
 	echo ""
 
 	while true; do
