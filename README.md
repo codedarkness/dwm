@@ -2,7 +2,7 @@
 
 dwm is a dynamic window manager for x11. It manages windows in tiled, monocle and floating layouts. For more info got to [suckless](https://suckless.org/dwm)
 
-![dwm - darknesscode](https://github.com/codedarkness/dwm-slstatus/blob/master/config-files/dwm-arch-linux.png)
+![dwm - darknesscode](..master/config-files/dwm-arch-linux.png)
 
 ## What this does
 
