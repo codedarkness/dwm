@@ -27,7 +27,7 @@ Patches added to dwm in this build:
 * uselesspag - add gaps between windows
 * pertag - have different layout in each tag
 
-![dwm - darknesscode](https://github.com/codedarkness/dwm-slstatus/blob/master/config-files/dwm-void-linux.png)
+![dwm - darknesscode](/config-files/dwm-void-linux.png)
 
 ## dmenu Patches
 
@@ -37,7 +37,7 @@ Patches added to dmenu in this build:
 * border - adds a border around the dmenu window
 * mouse support - dmenu will have basic mouse support
 
-![dwm - darknesscode](https://github.com/codedarkness/dwm-slstatus/blob/master/config-files/dwm.png)
+![dwm - darknesscode](/config-files/dwm.png)
 
 ## Helpfull keybindings for this installation
 
@@ -57,7 +57,7 @@ Add your keybinings in config.h
 
 **dwm** is my windows manager of choice. I use it in **Arch Linux**, **Debian** and **Void Linux**
 
-![dwm - darknesscode](https://github.com/codedarkness/dwm-slstatus/blob/master/config-files/dwm-debian.png)
+![dwm - darknesscode](/config-files/dwm-debian.png)
 
 ### Note
 
