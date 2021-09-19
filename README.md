@@ -2,7 +2,7 @@
 
 dwm is a dynamic window manager for x11. It manages windows in tiled, monocle and floating layouts. For more info got to [suckless](https://suckless.org/dwm)
 
-![dwm - darknesscode](/config-files/dwm-arch-linux.png)
+![dwm - darknesscode](/config-files/images/dwm-arch-linux.png)
 
 ## What this does
 
@@ -26,8 +26,11 @@ Patches added to dwm in this build:
 * center windows - center windows in toggle mode
 * uselesspag - add gaps between windows
 * pertag - have different layout in each tag
+* restartsig - restat dwm without loging out
+* colorbar - allow to chenge colors in staus bar elements
+* status2d - allow color and rectangles in status bar
 
-![dwm - darknesscode](/config-files/dwm-void-linux.png)
+![dwm - darknesscode](/config-files/images/dwm-void-linux.png)
 
 ## dmenu Patches
 
@@ -37,7 +40,7 @@ Patches added to dmenu in this build:
 * border - adds a border around the dmenu window
 * mouse support - dmenu will have basic mouse support
 
-![dwm - darknesscode](/config-files/dwm.png)
+![dwm - darknesscode](/config-files/images/dwm.png)
 
 ## Helpfull keybindings for this installation
 
@@ -57,7 +60,11 @@ Add your keybinings in config.h
 
 **dwm** is my windows manager of choice. I use it in **Arch Linux**, **Debian** and **Void Linux**
 
-![dwm - darknesscode](/config-files/dwm-debian.png)
+![dwm - darknesscode](/config-files/images/dwm-debian.png)
+
+**New Status bar**
+
+![dwm - darknesscode](/config-files/images/new-dwm.png)
 
 ### Note
 

@@ -51,9 +51,75 @@ sed -i 's/col_gray5\[\]\s*    =\s* ".*";/col_gray5\[\]\       =\ "#5A5AA4";/g' c
 echo " Window border color has changed" || echo " Not again what's wrong with you!!"
 echo ""
 
+## foreground color (center info bar)
+sed -i 's/col_gray6\[\]\s*    =\s* ".*";/col_gray6\[\]\       =\ "#81A1C1";/g' config-files/systems/dwm/config.h &&
+echo " Window border color has changed" || echo " Not again what's wrong with you!!"
+echo ""
+
+## foreground color (selected tag workspace)
+sed -i 's/col_gray7\[\]\s*    =\s* ".*";/col_gray7\[\]\       =\ "#1F618D";/g' config-files/systems/dwm/config.h &&
+echo " Window border color has changed" || echo " Not again what's wrong with you!!"
+echo ""
+
 ## border color focused windows and tags
 sed -i 's/col_cyan\[\]\s*     =\s* ".*";/col_cyan\[\]\        =\ "#5A5AA4";/g' config-files/systems/dwm/config.h &&
 echo " Boder color (focused/tags) has changed" || echo " Uppppssss!!!"
+echo ""
+
+## new status bar
+
+while true; do
+	read -p " New Status Bar [y - n] : " yn
+	case $yn in
+		[Yy]* )
+sed -i 's/\[SchemeStatus\]\ 	=\ { .*, .*, "#000000" },/\[SchemeStatus\]\ 	=\ { col_gray3, col_gray1, "#000000" },/g' config-files/systems/dwm/config.h &&
+sed -i 's/\[SchemeTagsSel\]\ 	=\ { .*, .*, "#000000" },/\[SchemeTagsSel\]\ 	=\ { col_gray5, col_gray1, "#000000" },/g' config-files/systems/dwm/config.h &&
+sed -i 's/\[SchemeTagsNorm\]\ 	=\ { .*, .*, "#000000" },/\[SchemeTagsNorm\]\ 	=\ { col_gray3, col_gray1, "#000000" },/g' config-files/systems/dwm/config.h &&
+sed -i 's/\[SchemeInfoSel\]\  	=\ { .*, .*, "#000000" },/\[SchemeInfoSel\]\  	=\ { col_gray6, col_gray1, "#000000" },/g' config-files/systems/dwm/config.h &&
+sed -i 's/\[SchemeInfoNorm\]\ 	=\ { .*, .*, "#000000" },/\[SchemeInfoNorm\]\ 	=\ { col_gray6, col_gray1, "#000000" },/g' config-files/systems/dwm/config.h &&
+
+sed -i 's/{ cpu_perc,		" CPU %s% : "/{ cpu_perc,		"^c#AF6015^CPU %s% : "/g' config-files/systems/slstatus/config.h &&
+sed -i 's/{ temp,     	"TEM %s°C : "/{ temp,     	"^c#5DADE2^TEM %s°C : "/g' config-files/systems/slstatus/config.h &&
+sed -i 's/{ ram_used, 	"MEM %s : "/{ ram_used, 	"^c#D7BDE2^MEM %s : "/g' config-files/systems/slstatus/config.h &&
+sed -i 's/{ disk_free,	"SSD %s : "/{ disk_free,	"^c#7FC6B6^SSD %s : "/g' config-files/systems/slstatus/config.h &&
+sed -i 's/{ battery_perc, "BAT %s% : "/{ battery_perc, "^c#E1ACFF^BAT %s% : "/g' config-files/systems/slstatus/config.h &&
+sed -i 's/{ run_command, 	"VOL %s%% : "/{ run_command, 	"^c#E59866^VOL %s%% : "/g' config-files/systems/slstatus/config.h &&
+sed -i 's/{ datetime, 	"%s"/{ datetime, 	"^c#81A1C1^%s"/g' config-files/systems/slstatus/config.h &&
+echo " Ne estaus bar has changed" || echo " The Matirx is broken" ; break ;;
+		[Nn]* )
+			break ;;
+		* ) echo " Please answer yes or no." ;;
+	esac
+done
+
+echo ""
+
+## classic status bar
+
+while true; do
+	read -p " Classic Status bar [y - n] : " yn
+	case $yn in
+		[Yy]* )
+sed -i 's/\[SchemeStatus\]\ 	=\ { .*, .*, "#000000" },/\[SchemeStatus\]\ 	=\ { col_gray3, col_gray1, "#000000" },/g' config-files/systems/dwm/config.h &&
+sed -i 's/\[SchemeTagsSel\]\ 	=\ { .*, .*, "#000000" },/\[SchemeTagsSel\]\ 	=\ { col_gray4, col_gray5, "#000000" },/g' config-files/systems/dwm/config.h &&
+sed -i 's/\[SchemeTagsNorm\]\ 	=\ { .*, .*, "#000000" },/\[SchemeTagsNorm\]\ 	=\ { col_gray3, col_gray1, "#000000" },/g' config-files/systems/dwm/config.h &&
+sed -i 's/\[SchemeInfoSel\]\  	=\ { .*, .*, "#000000" },/\[SchemeInfoSel\]\  	=\ { col_gray4, col_gray5, "#000000" },/g' config-files/systems/dwm/config.h &&
+sed -i 's/\[SchemeInfoNorm\]\ 	=\ { .*, .*, "#000000" },/\[SchemeInfoNorm\]\ 	=\ { col_gray4, col_gray5, "#000000" },/g' config-files/systems/dwm/config.h &&
+
+sed -i 's/{ cpu_perc,	"^c#AF6015^CPU %s% : "/{ cpu_perc,		" CPU %s% : "/g' config-files/systems/slstatus/config.h &&
+sed -i 's/{ temp,     	"^c#5DADE2^TEM %s°C : "/{ temp,     	"TEM %s°C : "/g' config-files/systems/slstatus/config.h &&
+sed -i 's/{ ram_used, 	"^c#D7BDE2^MEM %s : "/{ ram_used, 	"MEM %s : "/g' config-files/systems/slstatus/config.h &&
+sed -i 's/{ disk_free,	"^c#7FC6B6^SSD %s : "/{ disk_free,	"SSD %s : "/g' config-files/systems/slstatus/config.h &&
+sed -i 's/{ battery_perc, "^c#E1ACFF^BAT %s% : "/{ battery_perc, "BAT %s% : "/g' config-files/systems/slstatus/config.h &&
+sed -i 's/{ run_command, 	"^c#E59866^VOL %s%% : "/{ run_command, 	"VOL %s%% : "/g' config-files/systems/slstatus/config.h &&
+sed -i 's/{ datetime, 	"^c#81A1C1^%s"/{ datetime, 	"%s"/g' config-files/systems/slstatus/config.h &&
+echo " Classic status bar changed" || echo " We have problem" ; break ;;
+		[Nn]* )
+			break ;;
+		* ) echo "Please answer yes or no." ;;
+	esac
+done
+
 echo ""
 
 ## dmenu
@@ -149,9 +215,32 @@ while true; do
 			pwd
 			echo ""
 			sudo make clean install;
+			cd ../../..;
 			break ;;
 		[Nn]* )
-			echo " Don't forge to re-install dwm"; break ;;
+			echo " Don't forge to re-install dmenu"; break ;;
 		* ) echo " Please answer yes or no." ;;
 	esac
 done
+
+echo ""
+
+while true; do
+	read -p " Re-install slstatus [y - n] : " yn
+	case $yn in
+		[Yy]* )
+			cd config-files/systems/slstatus
+			pwd
+			echo ""
+			sudo make clean install;
+			cd ../../..;
+			break ;;
+		[Nn]* )
+			echo " Don't forge to re-install slstatus"; break ;;
+		* ) echo " Please answer yes or no." ;;
+	esac
+done
+
+echo ""
+echo " Now logout, then login to apply all the changes"
+echo ""

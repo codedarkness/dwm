@@ -16,22 +16,29 @@ static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=11" };
-static const char dmenufont[]       = "monospace:size=11";
+static const char *fonts[]          = { "noto:size=10" };
+static const char dmenufont[]       = "noto:size=10";
 static const char col_gray1[]       = "#1E1F29"; /* backgroun color */
 static const char col_gray2[]       = "#282A36";
 static const char col_gray3[]       = "#C0C5CE";
 static const char col_gray4[]       = "#D7D7D7";
 static const char col_gray5[]       = "#5A5AA4";
+static const char col_gray6[]       = "#81A1C1";
+static const char col_gray7[]       = "#1F618D";
 static const char col_cyan[]        = "#5A5AA4";
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	/*               	  fg           bg         border   */
+	[SchemeNorm]		= { col_gray3, col_gray1, col_gray2 },
+	[SchemeSel]			= { col_gray4, col_cyan,  col_cyan  },
+	[SchemeStatus] 		= { col_gray3, col_gray1, "#000000" }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel] 	= { col_gray7, col_gray1, "#000000" }, // Tagbar left selected {text,background,not used but cannot be empty}
+    [SchemeTagsNorm] 	= { col_gray3, col_gray1, "#000000" }, // Tagbar left unselected {text,background,not used but cannot be empty}
+    [SchemeInfoSel]  	= { col_gray6, col_gray1, "#000000" }, // infobar middle  selected {text,background,not used but cannot be empty}
+    [SchemeInfoNorm]  	= { col_gray6, col_gray1, "#000000" }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "DEV", "WWW", "SYS", "GFX", "MPC", "CHT", "TUI", "CLI", "GUI" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -39,11 +46,14 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      	  instance    title                tags mask     iscentered   isfloating   monitor */
-	{ "Gimp",     	  NULL,       NULL,                0,            0,		  0,           -1 },
 	{ "URxvt",	 	  NULL,	      "alsamixer",         0,			 1,		  1,	       -1 },
 	{ "Nitrogen",	  NULL,	      NULL,	         	   0,	         1,       1,           -1 },
-	{ "mpv",		  NULL,       NULL,                0,            1,       1,           -1 },
+	{ "mpv",	 	  NULL,       NULL,                0,            1,       1,           -1 },
 	{ "Lxappearance", NULL,	      NULL,                0,		 	 1,		  1,	       -1 },
+	{ "Brave-browser",NULL,	      NULL,                1 << 1,	 	 0,		  0,	       -1 },
+	{ "qutebrowser",  NULL,	      NULL,                1 << 1,	 	 0,		  0,	       -1 },
+	{ NULL,	 	  	  NULL,	      "Save As",           0,			 1,		  1,	       -1 },
+	{ NULL,	 	  	  NULL,	      "File Upload",       0,			 1,		  1,	       -1 },
 };
 
 /* layout(s) */
@@ -82,49 +92,53 @@ static const char *upvol[]	 = { "amixer", "-q", "set", "Master", "5%+", "unmute"
 static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 
 static Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("st") },
-	{ MODKEY|ShiftMask,             XK_o,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
-	{ MODKEY|ShiftMask,             XK_x,      quit,           {0} },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY|ShiftMask,             XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	/* modifier                     key        function        	argument */
+	{ MODKEY,                       XK_Return, spawn,          	{.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          	SHCMD("st") },
+	{ MODKEY|ShiftMask,             XK_o,      spawn,          	{.v = dmenucmd } },
+	{ MODKEY,                       XK_q,      killclient,     	{0} },
+	{ MODKEY|ShiftMask,             XK_x,      quit,           	{0} },
+	{ MODKEY,                       XK_b,      togglebar,      	{0} },
+	{ MODKEY,                       XK_j,      focusstack,     	{.i = +1 } },
+	{ MODKEY,                       XK_k,      focusstack,     	{.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    	{.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    	{.i = -1 } },
+	{ MODKEY,                       XK_i,      incnmaster,     	{.i = +1 } },
+	{ MODKEY,                       XK_d,      incnmaster,     	{.i = -1 } },
+	{ MODKEY,                       XK_h,      setmfact,       	{.f = -0.05} },
+	{ MODKEY,                       XK_l,      setmfact,       	{.f = +0.05} },
+	{ MODKEY,                       XK_Tab,    view,           	{0} },
+	{ MODKEY,                       XK_space,  setlayout,      	{0} },
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating, 	{0} },
+	{ MODKEY|ShiftMask,             XK_0,      view,           	{.ui = ~0 } },
+	{ MODKEY,                       XK_comma,  focusmon,       	{.i = -1 } },
+	{ MODKEY,                       XK_period, focusmon,       	{.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         	{.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_period, tagmon,         	{.i = +1 } },
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           	{1} },
 
 	/* My Keybindings */
-	{ MODKEY,           XK_F2,     spawn,      SHCMD("brave") },
-	{ MODKEY,           XK_F3,     spawn,      SHCMD("pcmanfm") },
-	{ MODKEY,           XK_F11,    spawn,      SHCMD("./.dwm/nmcli/networkmanager_dmenu") },
-	{ MODKEY,           XK_F12,    spawn,      SHCMD("blurlock") },
+	{ MODKEY,                       XK_F2,     spawn,          	SHCMD("brave") },
+	{ MODKEY,                       XK_F3,     spawn,          	SHCMD("pcmanfm") },
+	{ MODKEY,           			XK_F11,    spawn,      		SHCMD("./.dwm/nmcli/networkmanager_dmenu") },
+	{ MODKEY,                       XK_F12,    spawn,          	SHCMD("blurlock") },
 
-	{ MODKEY,			XK_r,      spawn,	   SHCMD("urxvt -e ranger") },
-	{ MODKEY,			XK_p,	   spawn,	   SHCMD("urxvt -e pyradio") },
-	{ MODKEY,			XK_c,	   spawn,	   SHCMD("urxvt -e calcurse")},
-	{ MODKEY,			XK_v,	   spawn,	   SHCMD("urxvt -e vim") },
-	{ MODKEY,           XK_t,      spawn,      SHCMD("urxvt -e tg") },
-	{ MODKEY,           XK_m,      spawn,      SHCMD("urxvt -e mutt") },
-	{ MODKEY,           XK_w,      spawn,      SHCMD("brave") },
+	{ MODKEY,				       	XK_r,	   spawn,	   	   	SHCMD("urxvt -e ranger") },
+	{ MODKEY,					   	XK_p,	   spawn,	   	   	SHCMD("urxvt -e pyradio") },
+	{ MODKEY,					   	XK_c,	   spawn,	   	   	SHCMD("urxvt -e calcurse")},
+	{ MODKEY,					   	XK_v,	   spawn,	   	   	SHCMD("urxvt -e vim") },
+	{ MODKEY,					   	XK_m,	   spawn,	   	   	SHCMD("urxvt -e mutt") },
+	{ MODKEY,					   	XK_t,	   spawn,	   	   	SHCMD("urxvt -e tg") },
+	{ MODKEY,					   	XK_w,	   spawn,	   	   	SHCMD("brave") },
 
-	{ MODKEY,           XK_0,      spawn,      SHCMD("./.dwm/sysact.sh") },
-	{ MODKEY,           XK_o,      spawn,      SHCMD("./.dwm/dmenu-programs.sh") },
+	{ MODKEY,           			XK_0,      spawn,      	   	SHCMD("./.dwm/sysact") },
+	{ MODKEY,           			XK_o,      spawn,		   	SHCMD("./.dwm/dmenu-programs") },
 
-	{ 0,                XK_Print,  spawn,      SHCMD("dc-scrot -d") },
+	/* Add your Custom bindings here */
+
+	/* Custom dmenu */
+
+	{ 0,                			XK_Print,  spawn,      		SHCMD("dc-scrot -d") },
 
 	/* volume keys */
 	{ 0,                 XF86XK_AudioMute,     spawn,          {.v = mutevol } },
@@ -159,3 +173,4 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
+

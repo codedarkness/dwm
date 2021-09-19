@@ -73,11 +73,11 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ cpu_perc, " CPU %s% : ",  NULL },
-	{ temp,     "TEM %s°C : ",   "/sys/class/thermal/thermal_zone3/temp" },
-	{ ram_used, "MEN %s : ",   NULL } ,
-	{ disk_free,"SSD %s : ",   "/" },
-	/* { battery_perc, "BAT %s% : ", "BAT0" }, */
-	{ run_command, "VOL %s%% : ", "/bin/sh -c \"amixer get Master | tail -n1 | grep -Po '\\[\\K[^%]*' | head -n1\"" },
-	{ datetime, "%s", "%a %-d %b %I:%M " },
+	{ cpu_perc,		"^c#AF6015^CPU %s% : ",	NULL },
+	{ temp,     	"^c#5DADE2^TEM %s°C : ",	"/sys/class/thermal/thermal_zone3/temp" },
+	{ ram_used, 	"^c#D7BDE2^MEM %s : ",		NULL } ,
+	{ disk_free,	"^c#7FC6B6^SSD %s : ",		"/" },
+	/* { battery_perc, "^c#E1ACFF^BAT %s% : ",	"BAT0" }, */
+	{ run_command, 	"^c#E59866^VOL %s%% : ",	"/bin/sh -c \"amixer get Master | tail -n1 | grep -Po '\\[\\K[^%]*' | head -n1\"" },
+	{ datetime, 	"^c#81A1C1^%s",			"%a %-d %b %I:%M " },
 };
