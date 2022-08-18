@@ -20,7 +20,7 @@ static const char *fonts[]          = { "noto:size=10" };
 static const char dmenufont[]       = "noto:size=10";
 static const char col_gray1[]       = "#1E1F29"; /* backgroun color */
 static const char col_gray2[]       = "#282A36";
-static const char col_gray3[]       = "#C0C5CE";
+static const char col_gray3[]       = "#7D7F8C";
 static const char col_gray4[]       = "#D7D7D7";
 static const char col_gray5[]       = "#5A5AA4";
 static const char col_gray6[]       = "#81A1C1";
@@ -30,11 +30,11 @@ static const char *colors[][3]      = {
 	/*               	  fg           bg         border   */
 	[SchemeNorm]		= { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]			= { col_gray4, col_cyan,  col_cyan  },
-	[SchemeStatus] 		= { col_gray3, col_gray1, "#000000" }, // Statusbar right {text,background,not used but cannot be empty}
-	[SchemeTagsSel] 	= { col_gray7, col_gray1, "#000000" }, // Tagbar left selected {text,background,not used but cannot be empty}
-    [SchemeTagsNorm] 	= { col_gray3, col_gray1, "#000000" }, // Tagbar left unselected {text,background,not used but cannot be empty}
-    [SchemeInfoSel]  	= { col_gray6, col_gray1, "#000000" }, // infobar middle  selected {text,background,not used but cannot be empty}
-    [SchemeInfoNorm]  	= { col_gray6, col_gray1, "#000000" }, // infobar middle  unselected {text,background,not used but cannot be empty}
+	[SchemeStatus] 		= { col_gray3, col_gray1, "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel] 	= { col_gray5, col_gray1, "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+    [SchemeTagsNorm] 	= { col_gray3, col_gray1, "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+    [SchemeInfoSel]  	= { col_gray6, col_gray1, "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
+    [SchemeInfoNorm]  	= { col_gray6, col_gray1, "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 /* tagging */
@@ -60,6 +60,7 @@ static const Rule rules[] = {
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -84,66 +85,94 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
 
+/* Constants */
+#define TERMINAL "urxvt"
+#define TERMCLASS "URxvt"
+
 /* volume commands */
 #include <X11/XF86keysym.h>
 
-static const char *mutevol[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
-static const char *upvol[]	 = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
-static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+static const char *mutevol[] = { "amixer", "-q", "set", "Speaker", "toggle", NULL };
+static const char *upvol[]	 = { "amixer", "-q", "set", "Speaker", "5%+", "unmute", NULL };
+static const char *downvol[] = { "amixer", "-q", "set", "Speaker", "5%-", "unmute", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        	argument */
-	{ MODKEY,                       XK_Return, spawn,          	{.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          	SHCMD("st") },
-	{ MODKEY|ShiftMask,             XK_o,      spawn,          	{.v = dmenucmd } },
-	{ MODKEY,                       XK_q,      killclient,     	{0} },
-	{ MODKEY|ShiftMask,             XK_x,      quit,           	{0} },
-	{ MODKEY,                       XK_b,      togglebar,      	{0} },
-	{ MODKEY,                       XK_j,      focusstack,     	{.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     	{.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    	{.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    	{.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     	{.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     	{.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       	{.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       	{.f = +0.05} },
-	{ MODKEY,                       XK_Tab,    view,           	{0} },
-	{ MODKEY,                       XK_space,  setlayout,      	{0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, 	{0} },
-	{ MODKEY|ShiftMask,             XK_0,      view,           	{.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       	{.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       	{.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         	{.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         	{.i = +1 } },
-	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           	{1} },
+	{ MODKEY,                       XK_Return, 					spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return, 					spawn,          SHCMD("alacritty") },
+	{ MODKEY,                       XK_b,      					togglebar,      {0} },
+	{ MODKEY,                       XK_d,      					incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_h,      					setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_i,      					incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_j,      					focusstack,     {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_j,      					rotatestack,    {.i = +1 } },
+	{ MODKEY,                       XK_k,      					focusstack,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_k,      					rotatestack,    {.i = -1 } },
+	{ MODKEY,                       XK_l,      					setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_o,      					spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_q,      					killclient,     {0} },
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      					quit,           {1} },
+	{ MODKEY|ShiftMask,             XK_x,      					quit,           {0} },
+	{ MODKEY,                       XK_Tab,    					view,           {0} },
+	{ MODKEY,                       XK_space,  					setlayout,      {0} },
+	{ MODKEY|ShiftMask,             XK_space,  					togglefloating,	{0} },
+	{ MODKEY|ShiftMask,             XK_0,      					view,           {.ui = ~0 } },
+	{ MODKEY,                       XK_comma,  					focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_period, 					focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,  					tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_period, 					tagmon,         {.i = +1 } },
+
+	{ 0,							XK_Print,					spawn,			SHCMD("dc-scrot -d") },
+
+	{ 0,							XF86XK_AudioMute,			spawn,			{.v = mutevol } },
+	{ 0,							XF86XK_AudioLowerVolume,	spawn,			{.v = downvol } },
+	{ 0,							XF86XK_AudioRaiseVolume,	spawn,			{.v = upvol } },
 
 	/* My Keybindings */
-	{ MODKEY,                       XK_F2,     spawn,          	SHCMD("brave") },
-	{ MODKEY,                       XK_F3,     spawn,          	SHCMD("pcmanfm") },
-	{ MODKEY,           			XK_F11,    spawn,      		SHCMD("./.dwm/nmcli/networkmanager_dmenu") },
-	{ MODKEY,                       XK_F12,    spawn,          	SHCMD("blurlock") },
+	{ MODKEY,						XK_F2,						spawn,			SHCMD("brave") },
+	{ MODKEY,						XK_F3,						spawn,			SHCMD("qutebrowser") },
+	{ MODKEY,						XK_F4,						spawn,			SHCMD(TERMINAL " -e w3m duckduckgo.com") },
+	{ MODKEY,						XK_F5,						spawn,			SHCMD("pcmanfm") },
+	{ MODKEY,						XK_F9,						spawn,			SHCMD(TERMINAL " -e ./Documents/myScripts/scripts/bashmount") },
+	{ MODKEY,						XK_F10,						spawn,			SHCMD("./Documents/myScripts/dmenu/kill-process") },
+	{ MODKEY,						XK_F11,						spawn,			SHCMD("./.dwm/nmcli/networkmanager_dmenu") },
+	{ MODKEY,						XK_F12,						spawn,			SHCMD("blurlock") },
+	{ MODKEY,						XK_0,						spawn,			SHCMD("./.dwm/sysact") },
 
-	{ MODKEY,				       	XK_r,	   spawn,	   	   	SHCMD("urxvt -e ranger") },
-	{ MODKEY,					   	XK_p,	   spawn,	   	   	SHCMD("urxvt -e pyradio") },
-	{ MODKEY,					   	XK_c,	   spawn,	   	   	SHCMD("urxvt -e calcurse")},
-	{ MODKEY,					   	XK_v,	   spawn,	   	   	SHCMD("urxvt -e vim") },
-	{ MODKEY,					   	XK_m,	   spawn,	   	   	SHCMD("urxvt -e mutt") },
-	{ MODKEY,					   	XK_t,	   spawn,	   	   	SHCMD("urxvt -e tg") },
-	{ MODKEY,					   	XK_w,	   spawn,	   	   	SHCMD("brave") },
+	{ MODKEY,						XK_a,						spawn,			SHCMD("./Documents/myScripts/dmenu/dmenu-appimages") },
+	{ MODKEY,						XK_c,   					spawn,			SHCMD(TERMINAL " -e ./Documents/myScripts/scripts/cli-launcher") },
+	{ MODKEY,						XK_e,						spawn,			SHCMD(TERMINAL " -e neomutt")},
+	{ MODKEY,						XK_m,						spawn,			SHCMD(TERMINAL " -e pyradio") },
+	{ MODKEY,						XK_p,						spawn,			SHCMD(TERMINAL " -e pipe-viewer") },
+	{ MODKEY,						XK_r,						spawn,			SHCMD(TERMINAL " -e ranger") },
+	{ MODKEY,						XK_s,						spawn,			SHCMD(TERMINAL " -e ./Documents/myScripts/scripts/myScriptsRepo") },
+	{ MODKEY,						XK_t,						spawn,			SHCMD(TERMINAL " -e tg") },
+	{ MODKEY,						XK_u,						spawn,			SHCMD(TERMINAL " -e ./Documents/myScripts/scripts/package-manager") },
+	{ MODKEY,						XK_v,						spawn,			SHCMD(TERMINAL " -e vim") },
+	{ MODKEY,						XK_w,						spawn,			SHCMD("brave") },
 
-	{ MODKEY,           			XK_0,      spawn,      	   	SHCMD("./.dwm/sysact") },
-	{ MODKEY,           			XK_o,      spawn,		   	SHCMD("./.dwm/dmenu-programs") },
+	{ MODKEY|ShiftMask,				XK_m,						spawn,			SHCMD(TERMINAL " -e musikcube") },
+	{ MODKEY|ShiftMask,				XK_t,						spawn,			SHCMD(TERMINAL " -e tremc") },
+	{ MODKEY|ShiftMask,				XK_w,						spawn,			SHCMD(TERMINAL " -e w3m duckduckgo.com") },
 
-	/* Add your Custom bindings here */
+	{ MODKEY|Mod1Mask,				XK_b,   					spawn,			SHCMD("./Documents/myScripts/dmenu/bookmarks/bookmark") },
+	{ MODKEY|Mod1Mask,				XK_d,   					spawn,			SHCMD("./Documents/myScripts/web-manager/darknesscode/darknesscode") },
+	{ MODKEY|Mod1Mask,				XK_e,   					spawn,			SHCMD("./Documents/myScripts/web-manager/epubymas/epubymas") },
+	{ MODKEY|Mod1Mask,				XK_f,   					spawn,			SHCMD("./Documents/myScripts/dmenu/mount-filesystem") },
+	{ MODKEY|Mod1Mask,				XK_m,						spawn,			SHCMD(TERMINAL " -e castero") },
+	{ MODKEY|Mod1Mask,				XK_r,   					spawn,			SHCMD("./Documents/myScripts/reading/reading-books") },
+	{ MODKEY|Mod1Mask,				XK_s,   					spawn,			SHCMD("./Documents/myScripts/dmenu/repos") },
+	{ MODKEY|Mod1Mask,				XK_t,   					spawn,			SHCMD("./Documents/myScripts/dmenu/tremc") },
+	{ MODKEY|Mod1Mask,				XK_u,						spawn,			SHCMD("./Documents/myScripts/dmenu/package-manager") },
+	{ MODKEY|Mod1Mask,				XK_w,						spawn,			SHCMD("qutebrowser") },
 
-	/* Custom dmenu */
-
-	{ 0,                			XK_Print,  spawn,      		SHCMD("dc-scrot -d") },
-
-	/* volume keys */
-	{ 0,                 XF86XK_AudioMute,     spawn,          {.v = mutevol } },
-	{ 0,          XF86XK_AudioLowerVolume,     spawn,          {.v = downvol } },
-	{ 0,          XF86XK_AudioRaiseVolume,     spawn,          {.v = upvol } },
+	{ MODKEY|ControlMask,			XK_d,   					spawn,			SHCMD(TERMINAL " -e ranger ./Documents/webSites/darknesscode") },
+	{ MODKEY|ControlMask,			XK_e,   					spawn,			SHCMD(TERMINAL " -e ranger ./Documents/webSites/epubymas") },
+	{ MODKEY|ControlMask,			XK_m,						spawn,			SHCMD(TERMINAL " -e ./Documents/myScripts/scripts/sync-music") },
+	{ MODKEY|ControlMask,			XK_s,   					spawn,			SHCMD(TERMINAL " -e ranger ./Documents/myScripts") },
+	{ MODKEY|ControlMask,			XK_l,   					spawn,			SHCMD(TERMINAL " -e ranger ./Documents/linux") },
+	{ MODKEY|ControlMask,			XK_v,   					spawn,			SHCMD(TERMINAL " -e ranger ./Videos") },
+	{ MODKEY|ControlMask,			XK_w,   					spawn,			SHCMD(TERMINAL " -e ranger ./Documents/webSites") },
 
 	/* change tags (desktop) */
 	TAGKEYS(                        XK_1,                      0)

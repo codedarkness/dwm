@@ -8,12 +8,11 @@ dwm is a dynamic window manager for x11. It manages windows in tiled, monocle an
 
 This script just install a custom build for:
 
-* *dwm*
-* *dmenu*
+* *dwm* v6.3
+* *dmenu* v5.1
 * *slstatus*
-* *st*
 * Copy custom files
-* Change color schemes
+* Color Schemes for dwm (config.h)
 
 Install *xsetroot* this application can manage the status bar with plain text and bash scripts.
 
@@ -23,12 +22,12 @@ Patches added to dwm in this build:
 
 * attachaside - master always in the left
 * autostart - programs when log in
-* center windows - center windows in toggle mode
-* uselesspag - add gaps between windows
-* pertag - have different layout in each tag
-* restartsig - restat dwm without loging out
-* colorbar - allow to chenge colors in staus bar elements
-* status2d - allow color and rectangles in status bar
+* center - center windows in toggle mode
+* colorbar - change foreground and background color of every status bar
+* restartsig - restart dwm without exit current session
+* rotatestack - moves a client form the bottom to the top of the stack
+* status2d - allows color in the status bar
+* uselessgas - add gaps between windows
 
 ![dwm - darknesscode](/config-files/images/dwm-void-linux.png)
 
@@ -39,6 +38,9 @@ Patches added to dmenu in this build:
 * center - centers dmenu in the middle of the screen
 * border - adds a border around the dmenu window
 * mouse support - dmenu will have basic mouse support
+* numbers - add text which pisplays the number of matched and total items
+* lines below pront - vertical list starts at the same horizontal line that the prompt is drawn
+* line height - sets the minimum height of dmenu line
 
 ![dwm - darknesscode](/config-files/images/dwm.png)
 
