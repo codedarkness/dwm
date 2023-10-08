@@ -2,8 +2,6 @@
 
 dwm is a dynamic window manager for x11. It manages windows in tiled, monocle and floating layouts. For more info got to [suckless](https://suckless.org/dwm)
 
-![dwm - darknesscode](/config-files/images/dwm-arch-linux.png)
-
 ## What this does
 
 This script just install a custom build for:
@@ -29,8 +27,6 @@ Patches added to dwm in this build:
 * status2d - allows color in the status bar
 * uselessgas - add gaps between windows
 
-![dwm - darknesscode](/config-files/images/dwm-void-linux.png)
-
 ## dmenu Patches
 
 Patches added to dmenu in this build:
@@ -42,13 +38,11 @@ Patches added to dmenu in this build:
 * lines below pront - vertical list starts at the same horizontal line that the prompt is drawn
 * line height - sets the minimum height of dmenu line
 
-![dwm - darknesscode](/config-files/images/dwm.png)
-
 ## Helpfull keybindings for this installation
 
 | Keybinding      | Action                |
 | :---------      | :------------------   |
-| MOD+Enter       | Open terminal (urxvt) |
+| MOD+Enter       | Open terminal (alacritty) |
 | MOD+Shift+Enter | Open terminal (st)    |
 | MOD+r           | Ranger File Manager   |
 | MOD+v           | Vim                   |
@@ -61,12 +55,6 @@ Patches added to dmenu in this build:
 Add your keybinings in config.h
 
 **dwm** is my windows manager of choice. I use it in **Arch Linux**, **Debian** and **Void Linux**
-
-![dwm - darknesscode](/config-files/images/dwm-debian.png)
-
-**New Status bar**
-
-![dwm - darknesscode](/config-files/images/new-dwm.png)
 
 ### Note
 
